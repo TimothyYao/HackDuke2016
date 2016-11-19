@@ -52,7 +52,12 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+<<<<<<< HEAD
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 200) + "\", Type \"help\" for more information!")
+=======
+            sendTextMessage(sender, "Could not understand " + text.substring(0, 200) + "\nType help for more information")
+
+>>>>>>> 983383f92d9b2d6dd752a472284066494917249a
         }
     }
     res.sendStatus(200)
@@ -125,3 +130,5 @@ function sendGenericMessage(sender) {
         }
     })
 }
+
+
