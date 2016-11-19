@@ -40,11 +40,16 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
+            let attached = event.message.attachment
             if (text === 'Generic') {
                 sendGenericMessage(sender)
                 continue
             }
             if (text.includes("something")) {
+                sendGenericMessage(sender)
+                continue
+            }
+            if (attached && attached.type == location) {
                 sendGenericMessage(sender)
                 continue
             }
