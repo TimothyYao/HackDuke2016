@@ -40,6 +40,10 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
+            if (text === 'help') {
+              sendTextMessage(sender, "Sorry, the help page has not been updated yet :c")
+              continue
+            }
             if (text === 'Generic') {
                 sendGenericMessage(sender)
                 continue
@@ -48,13 +52,12 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            sendTextMessage(sender, "Beep boop " + text.substring(0, 200))
+            sendTextMessage(sender, "Could not understand " + text.substring(0, 200))
+            sendTextMessage(sender, "Type help for more information")
         }
     }
     res.sendStatus(200)
 })
-
-
 
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
