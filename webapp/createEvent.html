@@ -5,6 +5,7 @@
 
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<!-- Include Required Prerequisites -->
+		<script src="jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
@@ -97,7 +98,7 @@
 		                <div class="control-group">
 		                    <label class="control-label">Zip / Postal Code</label>
 		                    <div class="controls">
-		                        <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code"
+		                        <input id="postal" name="postal" type="text" placeholder="zip or postal code"
 		                        class="input-xlarge">
 		                        <p class="help-block"></p>
 		                    </div>
@@ -406,7 +407,7 @@
 		    var eventName = $('#eventName').val();
 		    var contributors = $('#contributors').val();
 		    var dateTime = $('#dateTime').val();
-		    val address = $('#address').val() + " " + $('#city').val() + ", " + $('#region').val() + " " $('#postal-code').val() + " " + $('#country').val();
+		    var address = $('#address').val() + " " + $('#city').val() + ", " + $('#region').val() + " " $('#postal').val() + " " + $('#country').val();
 		    var description = $('#description').val();
 		    var tags = $('#tags').val();
 
