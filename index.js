@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 
-            if (lowerText === 'Environment') {
+            if (lowerText === 'environment') {
                 sendTextMessage(sender, "You picked Environment!");
             }
 
