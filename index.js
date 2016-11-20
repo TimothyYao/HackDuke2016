@@ -12,12 +12,12 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 // Process application/json
 app.use(bodyParser.json())
-
+app.use(express.static(__dirname + '/site'));
 // Index route
 app.get('/', function (req, res) {
 
     //res.render(render);
-    res.sendFile(__dirname+'/site/index.html');
+    res.sendFile('index.html');
 
 })
 
