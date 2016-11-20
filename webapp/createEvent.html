@@ -17,6 +17,7 @@
 	    <link rel="stylesheet" type="text/css" media="screen"
 	     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
+    	<script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
 
 	</head>
 
@@ -25,7 +26,7 @@
 
 		<div class="container">
 			<div class="row">
-				 <form action="http://servobot.herokuapp.com/createEvent" method="post" class="form-horizontal">
+				 <form action="" method="post" class="form-horizontal" id="event">
 		            <fieldset>
 		                <div class="control-group">
 		                    <label class="control-label">Event Name</label>
@@ -69,7 +70,7 @@
 		                <div class="control-group">
 		                    <label class="control-label">Address Line 1</label>
 		                    <div class="controls">
-		                        <input id="address-line1" name="address-line1" type="text" placeholder="address line 1"
+		                        <input id="address" name="address" type="text" placeholder="address"
 		                        class="input-xlarge">
 		                        <p class="help-block">Street address, P.O. box, company name, c/o</p>
 		                    </div>
@@ -359,17 +360,81 @@
 		                    </div>
 		                </div>
 
-
-
+		                <div class="control-group">
+		                    <label class="control-label">Description</label>
+		                    <div class="controls">
+		                        <input id="tags" name="tags" type="text" placeholder="tags"
+		                        class="input-xlarge">
+		                        <p class="help-block">Please separate by commas.</p>
+		                    </div>
+		                </div>
 
 
 		                </div>
 		            </fieldset>
-		            <input type="submit" value="Submit">
+		            <input id="submitButton" type="submit" value="Submit">
 		        </form>
 
 			</div>
 		</div>
 	</body>
+
+	<script>
+		$(function(){
+		  //just make a variable to keep track of the data coming from Firebase
+		  var data =[];
+		  
+		  //create a new connection to firebase
+		  var ref = new Firebase('https://hackduke-6be84.firebaseio.com');
+			
+		  //listen to data updates from firebase
+		  ref.on("value", function(snapshot){
+		    console.log(snapshot.val() );
+		    //when data updates at Firebase, put it in the data variable
+		    data = snapshot.val();
+		  })
+
+
+
+		  $('#event').submit(function(event){
+		    var $form = $(this);
+		    console.log("submit to Firebase");
+
+		    //make the submit disabled
+		    $form.find("#submitButton").prop('disabled', true);
+
+		    var eventName = $('#eventName').val();
+		    var contributors = $('#contributors').val();
+		    var dateTime = $('#dateTime').val();
+		    val address = $('#address').val() + " " + $('#city').val() + ", " + $('#region').val() + " " $('#postal-code').val() + " " + $('#country').val();
+		    var description = $('#description').val();
+		    var tags = $('#tags').val();
+
+		    //take the values from the form, and put them in an object
+		    var newEvent = {
+		      "eventName": descriptionToSend,
+		      "contributors":titleToSend,
+		      "dateTime": categoryToSend,
+		      "address": address,
+		      "description": description,
+		      "tags": tags
+
+		    }
+
+		    data.push(newEvent);
+		    console.log(data);
+		    //send the new data to Firebase
+				ref.set(data);
+
+		    return false;
+		  })
+		})
+
+
+	</script>
+
+
+
+
 
 </html>
