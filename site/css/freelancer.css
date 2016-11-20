@@ -21,6 +21,11 @@ a.active {
   color: #18BC9C;
   outline: none;
 }
+#logo {
+  height: 150px;
+  width: 150px;
+}
+
 h1,
 h2,
 h3,
