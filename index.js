@@ -69,21 +69,22 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Environment") {
-                sendLocationRequest(sender, function() { findEnvironmentEvents(sender) });
-                // setTimeout(function() { findEnvironmentEvents(sender) }, 1000)
+                sendLocationRequest(sender);
+                setTimeout(function() { findEnvironmentEvents(sender) }, 3000)
                 continue
             }
             if (text === "Health") {
                 sendLocationRequest(sender);
-                setTimeout(function() { findHealthEvents(sender) }, 1000)
+                setTimeout(function() { findHealthEvents(sender) }, 3000)
                 continue
             }
             if (text === "Poverty") {
+                sendLocationRequest(sender);
                 findPovertyEvents(sender)
                 continue
             }
             if (lowerText === 'help') {
-                sendTextMessage(sender, 'Sorry, the help page has not yet been updated :C')
+                sendTextMessage(sender, 'Type \"start\" to begin your search!')
                 continue
             }
             if (lowerText === 'location') {
