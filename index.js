@@ -167,16 +167,13 @@ function getFirstName(sender) {
     request({
         url: queryUrl,
         method: 'GET',
-        json: {
-            first_name: first_name
-        }
     }, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
-        return "asdf";
+        console.log(response.statusCode)
     })
     return "asdf"
 }
