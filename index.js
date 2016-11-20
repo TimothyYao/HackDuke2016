@@ -63,14 +63,14 @@ app.post('/webhook/', function (req, res) {
               sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
             }
-            // if (text === 'Generic') {
-            //     sendGenericMessage(sender)
-            //     continue
-            // }
-            // if (text.includes("something")) {
-            //     sendGenericMessage(sender)
-            //     continue
-            // }
+            if (text === 'Generic') {
+                sendGenericMessage(sender)
+                continue
+            }
+            if (text.includes("something")) {
+                sendGenericMessage(sender)
+                continue
+            }
             // if (text.includes("hello")) {
             //     var firstName = getFirstName(sender)
             //     sendTextMessage(sender, "Hello, " + firstName)
