@@ -63,7 +63,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 
-            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\"\nType help for more information!")
+            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
         }
     }
     res.sendStatus(200)
@@ -155,7 +155,6 @@ function getFirstName(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
-        console.log(response.statusCode)
+        return response.statusText;
     })
-    return "asdf"
 }
