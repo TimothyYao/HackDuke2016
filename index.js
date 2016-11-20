@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const fs = require('fs');
-var firebase = require('firebase');
-var firebaseRef = new firebase("https://hackduke-6be84.firebaseio.com");
+// var firebase = require('firebase');
+// var firebaseRef = new firebase("https://hackduke-6be84.firebaseio.com");
 
 
 app.set('port', (process.env.PORT || 5000))
@@ -29,28 +29,28 @@ app.get('/site', function (req, res) {
 })
 
 
-app.post('/createEvent', function(req, res) {
-    console.log(req.body)
-    // fs.writeFile("webapp/events.txt", JSON.stringify(req.body) , function(err) {
-    //     if(err) {
-    //         return console.log(err);
-    //     }
+// app.post('/createEvent', function(req, res) {
+//     console.log(req.body)
+//     // fs.writeFile("webapp/events.txt", JSON.stringify(req.body) , function(err) {
+//     //     if(err) {
+//     //         return console.log(err);
+//     //     }
 
-    //     console.log("The file was saved!");
-    // });
+//     //     console.log("The file was saved!");
+//     // });
 
-    firebaseRef.set({
-      eventName: req.body.eventName
-    })
-    firebaseRef.ref('eventName/' + req.body.eventName).set({
-      contributors: req.body.contributors,
-      address: req.body.address-line1 + ' ' + req.body.city + ', ' + req.body.region + ' ' + req.body.postal-code + ' ' + req.body.country,
-      description: req.body.description
-    })
+//     firebaseRef.set({
+//       eventName: req.body.eventName
+//     })
+//     firebaseRef.ref('eventName/' + req.body.eventName).set({
+//       contributors: req.body.contributors,
+//       address: req.body.address-line1 + ' ' + req.body.city + ', ' + req.body.region + ' ' + req.body.postal-code + ' ' + req.body.country,
+//       description: req.body.description
+//     })
 
-    res.sendFile(__dirname + '/webapp/eventCreated.html')
+//     res.sendFile(__dirname + '/webapp/eventCreated.html')
 
-})
+// })
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
