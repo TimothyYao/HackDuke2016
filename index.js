@@ -118,7 +118,7 @@ app.post('/webhook/', function (req, res) {
             if (lowerText === 'talk to me') {
               sendAction(sender, "typing_on")
               setTimeout(function() {
-                sendTextMessage(sender, )
+                sendTextMessage(sender, "helloo")
               }, 3000)
             }
             if (lowerText === 'location') {
