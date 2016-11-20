@@ -53,18 +53,18 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-<<<<<<< HEAD
+
             if (text.includes("hello")) {
-                getUserData(sender)
+                let firstName = getFirstName(sender)
+                sendTextMessage(sender, "Hello, " + firstName)
                 continue
             }
-=======
+
             if (attached && (attached.payload.elements.element.title === "Your Location")) {
                 sendGenericMessage(sender)
                 continue
             }
 
->>>>>>> fdbe4960a25084b6f1d852430b2c1d09d3eb18b5
             sendTextMessage(sender, "Could not understand " + text.substring(0, 200) + "\nType help for more information")
         }
     }
@@ -146,7 +146,7 @@ function sendGenericMessage(sender) {
     })
 }
 
-function getUserData(sender) {
+function getFirstName(sender) {
     let queryUrl = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name&access_token=' + token;
     request({
         url: queryUrl,
@@ -159,4 +159,5 @@ function getUserData(sender) {
         }
         console.log(response.statusCode)
     })
+    return "asdf"
 }
