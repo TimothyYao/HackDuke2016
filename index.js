@@ -129,15 +129,21 @@ app.post('/webhook/', function (req, res) {
 })
 
 function findEnvironmentEvents(sender) {
+    let link1 = "https://www.facebook.com/events/334490960257445/"
+    sendTextMessage(sender, "Here's some events that I found!")
+    sendTextMessage(sender, link1);
 }
 
 function findHealthEvents(sender) {
-    let link1 = "https://www.facebook.com/events/1795108914099674/";
+    let link1 = "https://www.facebook.com/events/1795108914099674/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
 }
 
 function findPovertyEvents(sender) {
+    let link1 = "https://www.facebook.com/events/334490960257445/"
+    sendTextMessage(sender, "Here's some events that I found!")
+    sendTextMessage(sender, link1);
 }
 
 function sendLocationRequest(sender) {
