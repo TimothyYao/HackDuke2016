@@ -88,10 +88,7 @@ app.post('/webhook/', function (req, res) {
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
         }
-        else {
-          sendTextMessage(sender, "not text")
 
-        }
 
         if (event.message && event.message.attachment) {
             console.log(event.message.attachment)
