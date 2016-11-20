@@ -52,6 +52,10 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+            if (text.includes("hello")) {
+                getUserData(sender)
+                continue
+            }
             sendTextMessage(sender, "Could not understand " + text.substring(0, 200) + "\nType help for more information")
         }
     }
@@ -123,5 +127,20 @@ function sendGenericMessage(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+    })
+}
+
+function getUserData(sender) {
+    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name&access_token=' + token;
+    request({
+        url: queryUrl,
+        method: 'GET'
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+        console.log(response.statusCode)
     })
 }
