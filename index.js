@@ -109,17 +109,22 @@ app.post('/webhook/', function (req, res) {
 
 function sendServiceOptions(sender) {
     let messageData = {
-        "text":"Pick a color:",
+        "text":"What type of service are you interested in?",
         "quick_replies":[
         {
             "content_type":"text",
-            "title":"Red",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            "title":"Environment",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ENVIRONMENT"
         },
         {
             "content_type":"text",
-            "title":"Green",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            "title":"Health",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_HEALTH"
+        },
+        {
+            "content_type":"text",
+            "title":"Poverty",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POVERTY"
         }
         ]
     }
