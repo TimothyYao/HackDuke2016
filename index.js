@@ -175,8 +175,8 @@ app.post('/webhook/', function (req, res) {
             let lat = event.message.attachments[0].payload.coordinates.lat
             let long = event.message.attachments[0].payload.coordinates.long
 
-            // sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
-            sendServiceOptions(sender);
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
+            // sendServiceOptions(sender);
           }
         }
         // if (event.message && event.message.attachments) {
@@ -271,12 +271,11 @@ function sendResponse(sender, data, callback) {
         console.log(sender)
       } else {
         console.log("Message successfully sent")
-        console.log(response)
+        if (typeof callback === "function") {
+          callback();
+        }
       }
   })
-  if (typeof callback === "function") {
-       callback();
-   }
 }
 
 function sendTextMessage(sender, text, callback) {
