@@ -272,11 +272,34 @@ function sendResponse(sender, data, callback) {
       } else {
         console.log("Message successfully sent")
         if (typeof callback === "function") {
-          callback();
+          sendAction(sender, "typing_on")
+          setTimeout(function() { callback() }, 2000)
         }
       }
   })
 }
+
+function sendAction(sender, action) {
+  let senderAction = data
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+          recipient: {id:sender},
+          sender_action: senderAction,
+      }
+  }, function(error, response, body) {
+      if (error) {
+        console.log('Error sending messages: ', error)
+      } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+      } else {
+        console.log("Message successfully sent")
+      }
+  })
+}
+
 
 function sendTextMessage(sender, text, callback) {
     sendResponse(sender, { text:text }, callback);
