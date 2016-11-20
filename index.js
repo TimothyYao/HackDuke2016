@@ -173,7 +173,7 @@ function getFirstName(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
-        console.log(response.statusCode)
+        return body;
     })
     return "asdf"
 }
