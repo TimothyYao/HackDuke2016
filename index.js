@@ -95,6 +95,9 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, "attachment!!!")
             sendTextMessage(sender, JSON.stringify(event.message.attachment))
         }
+        else {
+            sendTextMessage(sender, "its not an attachment")
+        }
 
         if(event.message && event.message.attatchment) {
 
