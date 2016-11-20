@@ -15,9 +15,10 @@ app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
-    res.send('Hello world, I am a chat bot')
-    app.use('/', express.static(__dirname + '/index.html'));
-    app.listen(8080);
+    // res.send('Hello world, I am a chat bot')
+    // app.use('/', express.static(__dirname + '/index.html'));
+    // app.listen(8080);
+    res.render(render);
 })
 
 // for Facebook verification
