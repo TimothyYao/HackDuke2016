@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Poverty") {
-                sendLocationRequest(sender)
+                sendServiceOptions(sender)
                 findPovertyEvents(sender)
                 continue
             }
