@@ -129,7 +129,7 @@ function sendServiceOptions(sender) {
                 }, {
                     "title": "Second card",
                     "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "image_url": "https://scontent-iad3-1.xx.fbcdn.net/v/l/t1.0-9/11148581_10206622212817858_891002715061600633_n.jpg?oh=14c2b1a751e09a5c7e76f2fae2ba48e1&oe=58B7325B",
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
