@@ -20,9 +20,57 @@ app.get('/', function (req, res) {
     res.sendFile('webapp/index.html');
 
 })
-app.get('/site', function (reg, res) {
+app.get('/site', function (req, res) {
   res.sendFile('site/index.html')
 })
+
+app.post('/createEvent', function(req, res) {
+  processFormFieldsIndividual(req, res);
+})
+
+//process submitted forms
+function processAllFieldsOfTheForm(req, res) {
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function (err, fields, files) {
+        //Store the data from the fields in your data store.
+        //The data store could be a file or database or any other store based
+        //on your application.
+        res.writeHead(200, {
+            'content-type': 'text/plain'
+        });
+        res.write('received the data:\n\n');
+        res.end(util.inspect({
+            fields: fields,
+            files: files
+        }));
+    });
+}
+
+function processFormFieldsIndividual(req, res) {
+    //Store the data from the fields in your data store.
+    //The data store could be a file or database or any other store based
+    //on your application.
+    var fields = [];
+    var form = new formidable.IncomingForm();
+    form.on('field', function (field, value) {
+        console.log(field);
+        console.log(value);
+        fields[field] = value;
+    });
+
+    form.on('end', function () {
+        res.writeHead(200, {
+            'content-type': 'text/plain'
+        });
+        res.write('received the data:\n\n');
+        res.end(util.inspect({
+            fields: fields
+        }));
+    });
+    form.parse(req);
+}
+
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
