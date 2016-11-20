@@ -30,8 +30,7 @@
                 <!-- Address form -->
          
                 <h2>Address</h2>
-         
-                <!-- full-name input-->
+
                 <div class="control-group">
                     <label class="control-label">Event Name</label>
                     <div class="controls">
@@ -46,14 +45,14 @@
                     <div class="controls">
                         <input id="full-name" name="full-name" type="text" placeholder="full name"
                         class="input-xlarge">
-                        <p class="help-block"></p>
+                        <p class="help-block"> Please separate names by semi colons</p>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label">Date and Time of Event</label>
+                    <label class="control-label">Date and Time</label>
                     <div class="controls">
-						<input type="text" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+						<input id="datetime" type="text" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -353,6 +352,49 @@
                             <option value="ZW">Zimbabwe</option>
                         </select>
                     </div>
+
+	                <div class="control-group">
+	                    <label class="control-label">Description</label>
+	                    <div class="controls">
+	                        <input id="description" name="description" type="text" placeholder="description"
+	                        class="input-xlarge">
+	                        <p class="help-block"></p>
+	                    </div>
+	                </div>
+
+
+	                <div class="control-group">
+	                    <label class="control-label">Tags and Categories</label>
+	                    <div class="controls">
+							<div class="chips"></div>
+							<div class="chips chips-initial"></div>
+							<div class="chips chips-placeholder"></div>
+        
+
+
+
+	                    </div>
+	                </div>
+
+	                <script>
+	                  $('.chips').material_chip();
+  $('.chips-initial').material_chip({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+  $('.chips-placeholder').material_chip({
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag',
+  });
+  </script>
+
+
+
                 </div>
             </fieldset>
         </form>
