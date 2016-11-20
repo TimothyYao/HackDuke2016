@@ -1,0 +1,25 @@
+#success_message{ display: none;}
+
+body{
+	background-color: #293241;
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    overflow: hidden;
+}
+
+.form-horizontal {
+		background-color: #293241;
+		font-size:20px;
+		color: white;
+}
+
+.btnSubmit {
+	color: #293241
+}
+
+#logo {
+	height: 300px;
+	width: 300px;
+	float: right;
+	z-index: 1;
+	top: -30;
+}
