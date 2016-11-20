@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const fs = require('fs');
+// var firebase = require('firebase');
+// var firebaseRef = new firebase("https://hackduke-6be84.firebaseio.com");
 
 
 app.set('port', (process.env.PORT || 5000))
@@ -27,67 +29,28 @@ app.get('/site', function (req, res) {
 })
 
 
-app.post('/createEvent', function(req, res) {
-    console.log(req.body)
-    fs.writeFile("webapp/events.txt", JSON.stringify(req.body) , function(err) {
-        if(err) {
-            return console.log(err);
-        }
-
-        console.log("The file was saved!");
-    });
-    res.sendFile(__dirname + '/webapp/eventCreated.html')
-
-})
-
 // app.post('/createEvent', function(req, res) {
-//   console.log('hello');
-//   processFormFieldsIndividual(req, res);
+//     console.log(req.body)
+//     // fs.writeFile("webapp/events.txt", JSON.stringify(req.body) , function(err) {
+//     //     if(err) {
+//     //         return console.log(err);
+//     //     }
+
+//     //     console.log("The file was saved!");
+//     // });
+
+//     firebaseRef.set({
+//       eventName: req.body.eventName
+//     })
+//     firebaseRef.ref('eventName/' + req.body.eventName).set({
+//       contributors: req.body.contributors,
+//       address: req.body.address-line1 + ' ' + req.body.city + ', ' + req.body.region + ' ' + req.body.postal-code + ' ' + req.body.country,
+//       description: req.body.description
+//     })
+
+//     res.sendFile(__dirname + '/webapp/eventCreated.html')
+
 // })
-
-// //process submitted forms
-// function processAllFieldsOfTheForm(req, res) {
-//     var form = new formidable.IncomingForm();
-
-//     form.parse(req, function (err, fields, files) {
-//         //Store the data from the fields in your data store.
-//         //The data store could be a file or database or any other store based
-//         //on your application.
-//         res.writeHead(200, {
-//             'content-type': 'text/plain'
-//         });
-//         res.write('received the data:\n\n');
-//         res.end(util.inspect({
-//             fields: fields,
-//             files: files
-//         }));
-//     });
-// }
-
-// function processFormFieldsIndividual(req, res) {
-//     //Store the data from the fields in your data store.
-//     //The data store could be a file or database or any other store based
-//     //on your application.
-//     var fields = [];
-//     var form = new formidable.IncomingForm();
-//     form.on('field', function (field, value) {
-//         console.log(field);
-//         console.log(value);
-//         fields[field] = value;
-//     });
-
-//     form.on('end', function () {
-//         res.writeHead(200, {
-//             'content-type': 'text/plain'
-//         });
-//         res.write('received the data:\n\n');
-//         res.end(util.inspect({
-//             fields: fields
-//         }));
-//     });
-//     form.parse(req);
-// }
-
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
@@ -206,14 +169,18 @@ function findEnvironmentEvents(sender) {
 
 function findHealthEvents(sender) {
     let link1 = "https://www.facebook.com/events/1795108914099674/"
+    let link2 = "https://www.facebook.com/events/1733465790311537/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
+    sendTextMessage(sender, link2);
 }
 
 function findPovertyEvents(sender) {
-    let link1 = "https://www.facebook.com/events/334490960257445/"
+    let link1 = "https://www.facebook.com/events/133473113797314/"
+    let link2 = "https://www.facebook.com/events/187959071608479/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
+    sendTextMessage(sender, link2);
 }
 
 function sendLocationRequest(sender) {
