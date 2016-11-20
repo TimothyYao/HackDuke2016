@@ -40,7 +40,6 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            let attached = event.message.attachment
             if (text === 'test quick response') {
               message = {
                 "text":"Pick a color:",
