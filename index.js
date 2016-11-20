@@ -58,7 +58,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message) {
           if (event.message.text) {
             let text = event.message.text
-            console.log("sender is :" + sender)
+            console.log("sender is: " + sender)
 
             let lowerText = text.toLowerCase();
             if (lowerText.includes("start")) {
@@ -90,6 +90,7 @@ app.post('/webhook/', function (req, res) {
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
           }
+          console.log(event.message);
           if(event.message.attachment) {
             console.log("message has an attachment")
               lat = event.message.attachments[0].payload.coordinates.lat
