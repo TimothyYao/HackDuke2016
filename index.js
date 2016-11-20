@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+var FB = require('fb');
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -207,6 +208,10 @@ function sendGenericMessage(sender) {
 
 function getFirstName(sender) {
     let queryUrl = 'https://graph.facebook.com/v2.6/' + sender.id + '?fields=first_name&access_token=' + token;
+    var userID = "/"+sender.id;
+    FB.api(userID, {fields: 'last_name'}, function(response) {
+      return response;
+    });
     request({
         url: queryUrl,
         method: 'GET',
