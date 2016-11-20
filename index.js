@@ -93,7 +93,8 @@ app.post('/webhook/', function (req, res) {
             let lowerText = text.toLowerCase();
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
-                sendTextMessage(sender, "Hello, " + firstName, sendLocationRequest(sender))
+                sendTextMessage(sender, "Hello, " + firstName)
+                setTimeout(function() { sendLocationRequest(sender) }, 2000)
                 // setTimeout(function() { sendLocationRequest(sender) }, 1000)
                 // setTimeout(function() { sendServiceOptions(sender) }, 1000)
                 continue
@@ -138,7 +139,8 @@ app.post('/webhook/', function (req, res) {
             let lat = event.message.attachments[0].payload.coordinates.lat
             let long = event.message.attachments[0].payload.coordinates.long
 
-            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+            setTimeout(function { sendServiceOptions(sender) }, 2000)
             // sendServiceOptions(sender);
           }
         }
@@ -241,7 +243,7 @@ function sendResponse(sender, data, callback) {
       }
       if (typeof callback === "function") {
         // sendAction(sender, "typing_on")
-        setTimeout(callback, 2000)
+        setTimeout(function() { callback() }, 2000)
       }
   })
 }
