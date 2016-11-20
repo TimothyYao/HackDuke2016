@@ -40,7 +40,7 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            let attached = event.message.attachment
+            // let attached = event.message.attachment
             // if (text === 'test quick response') {
             //   message = {
             //     "text":"Pick a color:",
@@ -64,23 +64,23 @@ app.post('/webhook/', function (req, res) {
               sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
             }
-            if (text === 'Generic') {
-                sendGenericMessage(sender)
-                continue
-            }
-            if (text.includes("something")) {
-                sendGenericMessage(sender)
-                continue
-            }
+            // if (text === 'Generic') {
+            //     sendGenericMessage(sender)
+            //     continue
+            // }
+            // if (text.includes("something")) {
+            //     sendGenericMessage(sender)
+            //     continue
+            // }
             // if (text.includes("hello")) {
             //     var firstName = getFirstName(sender)
             //     sendTextMessage(sender, "Hello, " + firstName)
             //     continue
             // }
-            if (attached && (attached.payload.type === "location")) {
-                sendGenericMessage(sender)
-                continue
-            }
+            // if (attached && (attached.payload.type === "location")) {
+            //     sendGenericMessage(sender)
+            //     continue
+            // }
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
         }
