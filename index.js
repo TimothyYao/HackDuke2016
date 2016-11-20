@@ -109,17 +109,23 @@ app.post('/webhook/', function (req, res) {
             }
             if (text === "Environment") {
                 sendAction(sender, "typing_on")
-                setTimeout(function() { findEnvironmentEvents(sender) }, 5000)
+                setTimeout(function() { sendTextMessage(sender, "Here's some events that I found that might interest you!") }, 500);
+                setTimeout(function() { sendAction(sender, "typing_on") }, 1000)
+                setTimeout(function() { findEnvironmentEvents(sender) }, 3000)
                 continue
             }
             if (text === "Health") {
                 sendAction(sender, "typing_on")
-                setTimeout(function() { findHealthEvents(sender) }, 5000)
+                setTimeout(function() { sendTextMessage(sender, "Here's some events that I found that might interest you!") }, 500);
+                setTimeout(function() { sendAction(sender, "typing_on") }, 1000)
+                setTimeout(function() { findHealthEvents(sender) }, 3000)
                 continue
             }
             if (text === "Poverty") {
                 sendAction(sender, "typing_on")
-                setTimeout(function() { findPovertyEvents(sender) }, 5000)
+                setTimeout(function() { sendTextMessage(sender, "Here's some events that I found that might interest you!") }, 500);
+                setTimeout(function() { sendAction(sender, "typing_on") }, 1000)
+                setTimeout(function() { findPovertyEvents(sender) }, 3000)
                 continue
             }
             if (lowerText === 'help') {
@@ -184,14 +190,12 @@ app.post('/webhook/', function (req, res) {
 
 function findEnvironmentEvents(sender) {
     let link1 = "https://www.facebook.com/events/334490960257445/"
-    sendTextMessage(sender, "Here's some events that I found that might interest you!")
     sendTextMessage(sender, link1);
 }
 
 function findHealthEvents(sender) {
     let link1 = "https://www.facebook.com/events/1795108914099674/"
     let link2 = "https://www.facebook.com/events/1733465790311537/"
-    sendTextMessage(sender, "Here's some events that I found that might interest you!")
     sendTextMessage(sender, link1);
     sendTextMessage(sender, link2);
 }
@@ -199,7 +203,6 @@ function findHealthEvents(sender) {
 function findPovertyEvents(sender) {
     let link1 = "https://www.facebook.com/events/133473113797314/"
     let link2 = "https://www.facebook.com/events/187959071608479/"
-    sendTextMessage(sender, "Here's some events that I found that might interest you!")
     sendTextMessage(sender, link1);
     sendTextMessage(sender, link2);
 }
