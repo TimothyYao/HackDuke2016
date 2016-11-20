@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
     app.use('/', express.static(__dirname + '/index.html'));
-    app.listen(8080);
+    // app.listen(8080);
 })
 
 // for Facebook verification
@@ -156,7 +156,7 @@ function sendResponse(sender, data, callback) {
       qs: {access_token:token},
       method: 'POST',
       json: {
-          sender: {id:sender},
+          recipient: {id:sender},
           message: messageData,
       }
   }, function(error, response, body) {
