@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Poverty") {
-                sendLocationRequest(sender);
+                sendLocationRequest(sender)
                 findPovertyEvents(sender)
                 continue
             }
@@ -150,7 +150,7 @@ function findPovertyEvents(sender) {
     sendTextMessage(sender, link1);
 }
 
-function sendLocationRequest(sender, callback) {
+function sendLocationRequest(sender) {
   let messageData = {
     "text":"Please share your location:",
     "quick_replies":[
@@ -159,7 +159,7 @@ function sendLocationRequest(sender, callback) {
       }
     ]
   }
-  sendResponse(sender, messageData, callback)
+  sendResponse(sender, messageData)
 }
 
 function sendServiceOptions(sender) {
