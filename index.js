@@ -176,12 +176,7 @@ function getFirstName(sender) {
     request({
         url: queryUrl,
         method: 'GET',
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-        return body;
+    }, function(data) {
+        return data;
     })
 }
