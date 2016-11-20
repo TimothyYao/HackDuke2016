@@ -16,6 +16,8 @@ app.use(bodyParser.json())
 // Index route
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
+    app.use('/', express.static(__dirname + '/index.html'));
+    app.listen(8080);
 })
 
 // for Facebook verification
@@ -45,7 +47,7 @@ app.post('/webhook/', function (req, res) {
             let fs = require('fs')
             fs.writeFile("preferences.txt", "this is a test", function(err) {
                 if (err) {
-                    return console.log(err)
+                    return console.log("AN ERROR HAPPENEDDDDDDDDDDDDDDDDDDDDDD")
                 }
 
                 console.log("File saved")
