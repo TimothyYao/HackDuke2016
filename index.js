@@ -123,7 +123,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Poverty") {
-                fsetTimeout(function() { findPovertyEvents(sender) }, 5000)
+                setTimeout(function() { findPovertyEvents(sender) }, 5000)
                 continue
             }
             if (lowerText === 'help') {
