@@ -116,10 +116,11 @@ function sendServiceOptions(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "button",
+                "template_type": "generic",
                 "elements": [{
                     "title": "Types of Service",
                     "subtitle": "What are you intrested in?",
+                    "image_url": "http://uumilwaukee.org/wp-content/uploads/2015/07/volunteer-logo-sized-to-6.9x3.jpg",
                     "buttons": [{
                         "type": "postback",
                         "title": "Environment",
