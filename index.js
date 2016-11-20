@@ -29,7 +29,7 @@ app.get('/site', function (req, res) {
 
 app.post('/createEvent', function(req, res) {
     console.log(req.body)
-    fs.writeFile("webapp/events.json", JSON.stringify(req.body) , function(err) {
+    fs.writeFile("webapp/events.txt", JSON.stringify(req.body) , function(err) {
         if(err) {
             return console.log(err);
         }

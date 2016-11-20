@@ -3,20 +3,22 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
 	
 	<script>
-	    $(function() {
-		   var people = [];
+		var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
-		   $.getJSON('events.json', function(data) {
-		      //  $.each(data.eventName, function(i, f) {
-		      //     var tblRow = "<tr>" + "<td>" + f.firstName + "</td>" +
-		      //      "<td>" + f.lastName + "</td>" + "<td>" + f.job + "</td>" + "<td>" + f.roll + "</td>" + "</tr>"
-		      //      $(tblRow).appendTo("#userdata tbody");
-		     	// });
-		     	console.log(data);
-		   });
+		function loadFile() {
+		    reader.open('get', 'events.txt', true); 
+		    reader.onreadystatechange = displayContents;
+		    reader.send(null);
+		}
 
-		});
-	</script>
+		function displayContents() {
+		    if(reader.readyState==4) {
+		        var el = document.getElementById('logistics');
+		        el.innerHTML = reader.responseText;
+		    }
+		}
+
+
 
 
 	</head>
