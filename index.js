@@ -45,7 +45,7 @@ app.post('/webhook/', function (req, res) {
             let fs = require('fs')
             fs.writeFile("preferences.txt", "this is a test", function(err) {
                 if (err) {
-                    return console.log(err)
+                    return console.log("AN ERROR HAPPENEDDDDDDDDDDDDDDDDDDDDDD")
                 }
 
                 console.log("File saved")
