@@ -7,14 +7,14 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
 	font-size:17px;
+	width: 225px;
 	padding:16px 31px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #637389;
 }
 .signUp:hover {
-	background-color:#166b12;
+	background-color:#637389;
 }
 .signUp:active {
 	position:relative;
@@ -29,7 +29,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	padding-right:15px;
 	font-size:17px;
 	padding:16px 31px;
 	text-decoration:none;
@@ -43,4 +43,9 @@
 	top:1px;
 }
 
+#logoImage {
+	height: 150px;
+	width: 150px;
+
+}
 
