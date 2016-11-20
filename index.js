@@ -29,7 +29,7 @@ app.get('/site', function (req, res) {
 
 app.post('/createEvent', function(req, res) {
     console.log(req.body.eventName)
-    res.sendFile('webapp/index.html')
+    res.sendFile('index.html')
 })
 
 // app.post('/createEvent', function(req, res) {
