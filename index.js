@@ -117,9 +117,8 @@ function sendServiceOptions(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "https://scontent-iad3-1.xx.fbcdn.net/v/l/t1.0-9/11148581_10206622212817858_891002715061600633_n.jpg?oh=14c2b1a751e09a5c7e76f2fae2ba48e1&oe=58B7325B",
+                    "title": "Types of Service",
+                    "subtitle": "What are you intrested in?",
                     "buttons": [{
                         "type": "postback",
                         "title": "Environment",
