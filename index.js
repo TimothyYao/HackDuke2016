@@ -101,12 +101,15 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         var sender = event.sender.id
+        console.log("event recieved: ")
+        console.log(event)
         if (event.message) {
+          console.log("message recieved: ")
           console.log(event.message)
           if (event.message.text) {
 
             let text = event.message.text
-            console.log("sender is :" + sender)
+            // console.log("sender is :" + sender)
 
             let lowerText = text.toLowerCase();
             if (lowerText.includes("start")) {
