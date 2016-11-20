@@ -90,7 +90,9 @@ app.post('/webhook/', function (req, res) {
         }
         else if(event.message){
             sendTextMessage(sender, "sdfsadf")
+            sendTextMessage(sender, JSON.stringify(event));
             sendTextMessage(sender, JSON.stringify(event.message))
+
         }
 
 
