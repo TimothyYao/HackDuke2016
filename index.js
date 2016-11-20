@@ -37,7 +37,7 @@ app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
-        let sender = event.sender.id
+        var sender = event.sender.id
         if (event.message) {
           console.log(event.message)
           if (event.message.text) {
@@ -46,13 +46,13 @@ app.post('/webhook/', function (req, res) {
 
             let lowerText = text.toLowerCase();
             if (lowerText.includes("start")) {
-                var firstName = getFirstName(sender)
+                let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
                 sendServiceOptions(sender);
                 continue
             }
             if (text === 'help') {
-                sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
+                sendTextMessage(sender, 'Sorry, the help page has not yet been updated :C')
                 continue
             }
             if (lowerText === 'location') {
@@ -72,7 +72,7 @@ app.post('/webhook/', function (req, res) {
             //     continue
             // }
 
-            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
+            sendTextMessage(sender, 'Could not understand "' + text.substring(0, 320) + '".\nTry typing "help" for more information!')
           }
           if(event.message.attachments) {
             console.log("message has an attachment")
