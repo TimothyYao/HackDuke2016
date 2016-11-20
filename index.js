@@ -208,17 +208,17 @@ function sendGenericMessage(sender) {
 }
 
 function getFirstName(sender) {
-    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender.id + '?fields=first_name&access_token=' + token;
+    // let queryUrl = 'https://graph.facebook.com/v2.6/' + sender.id + '?fields=first_name&access_token=' + token;
     var userID = "/"+sender.id;
     FB.api(userID, {fields: 'last_name'}, function(response) {
-      return response;
+      console.log(response)
     });
-    request({
-        url: queryUrl,
-        method: 'GET',
-        qs: sender,
-    }, function(error, response, body) {
+    // request({
+    //     url: queryUrl,
+    //     method: 'GET',
+    //     qs: sender,
+    // }, function(error, response, body) {
         
-    })
+    // })
     return "friend!";
 }
