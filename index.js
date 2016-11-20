@@ -156,7 +156,7 @@ function sendResponse(sender, data, callback) {
       qs: {access_token:token},
       method: 'POST',
       json: {
-          recipient: {id:sender},
+          sender: {id:sender},
           message: messageData,
       }
   }, function(error, response, body) {
