@@ -72,11 +72,11 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            // if (text.includes("hello")) {
-            //     var firstName = getFirstName(sender)
-            //     sendTextMessage(sender, "Hello, " + firstName)
-            //     continue
-            // }
+            if (text.includes("hello")) {
+                var firstName = getFirstName(sender)
+                sendTextMessage(sender, "Hello, " + firstName)
+                continue
+            }
             // if (attached && (attached.payload.type === "location")) {
             //     sendGenericMessage(sender)
             //     continue
@@ -163,18 +163,18 @@ function sendGenericMessage(sender) {
     })
 }
 
-// function getFirstName(sender) {
-//     let queryUrl = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name&access_token=' + token;
-//     request({
-//         url: queryUrl,
-//         method: 'GET'
-//     }, function(error, response, body) {
-//         if (error) {
-//             console.log('Error sending messages: ', error)
-//         } else if (response.body.error) {
-//             console.log('Error: ', response.body.error)
-//         }
-//         console.log(response.statusCode)
-//     })
-//     return "asdf"
-// }
+function getFirstName(sender) {
+    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name&access_token=' + token;
+    request({
+        url: queryUrl,
+        method: 'GET',
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+        console.log(response.statusCode)
+    })
+    return "asdf"
+}
