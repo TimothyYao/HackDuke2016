@@ -165,7 +165,9 @@ app.post('/webhook/', function (req, res) {
 
             // sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
             sendAction(sender, "typing_on")
-            setTimeout(function() { sendServiceOptions(sender) }, 2000)
+            setTimeout(function() {
+              sendServiceOptions(sender, "What kind of service option are you interested in?")
+            }, 2000)
             // sendServiceOptions(sender);
           }
         }
@@ -191,6 +193,7 @@ app.post('/webhook/', function (req, res) {
 function findEnvironmentEvents(sender) {
     let link1 = "https://www.facebook.com/events/334490960257445/"
     sendTextMessage(sender, link1);
+    setTimeout(function() { sendServiceOptions(sender, "view more") }, 1000)
 }
 
 function findHealthEvents(sender) {
@@ -198,6 +201,7 @@ function findHealthEvents(sender) {
     let link2 = "https://www.facebook.com/events/1733465790311537/"
     sendTextMessage(sender, link1);
     sendTextMessage(sender, link2);
+    setTimeout(function() { sendServiceOptions(sender, "view more") }, 1000)
 }
 
 function findPovertyEvents(sender) {
@@ -205,6 +209,7 @@ function findPovertyEvents(sender) {
     let link2 = "https://www.facebook.com/events/187959071608479/"
     sendTextMessage(sender, link1);
     sendTextMessage(sender, link2);
+    setTimeout(function() { sendServiceOptions(sender, "view more") }, 1000)
 }
 
 function sendLocationRequest(sender) {
@@ -219,9 +224,9 @@ function sendLocationRequest(sender) {
   sendResponse(sender, messageData)
 }
 
-function sendServiceOptions(sender) {
+function sendServiceOptions(sender, text) {
     let messageData = {
-        "text":"What type of service are you interested in?",
+        "text": text,
         "quick_replies":[
           {
               "content_type":"text",
