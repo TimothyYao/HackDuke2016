@@ -87,7 +87,7 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 
-function sendResponse(sender, data, callback = null) {
+function sendResponse(sender, data, callback) {
   let messageData = data
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
