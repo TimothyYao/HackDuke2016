@@ -177,8 +177,7 @@ function getFirstName(sender) {
         url: queryUrl,
         method: 'GET',
         qs: sender,
-        json: true
     }, function(error, response, body) {
-        return JSON.parse(body);
+        return "hello";
     })
 }
