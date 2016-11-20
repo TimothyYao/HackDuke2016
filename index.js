@@ -5,13 +5,6 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-FB.init({
-  appId      : 'your-app-id',
-  xfbml      : true,
-  version    : 'v2.8'
-});
-FB.AppEvents.logPageView();
-
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
