@@ -111,7 +111,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (lowerText === 'help') {
-                sendTextMessage(sender, 'Type \"start\" to begin your search!')
+                sendTextMessage(sender, 'Type \"start\" to begin your search!', sendTextMessage(sender, '1', sendTextMessage(sender, '2')))
                 continue
             }
             if (lowerText === 'location') {
@@ -138,8 +138,8 @@ app.post('/webhook/', function (req, res) {
             let lat = event.message.attachments[0].payload.coordinates.lat
             let long = event.message.attachments[0].payload.coordinates.long
 
-            // sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
-            sendServiceOptions(sender);
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
+            // sendServiceOptions(sender);
           }
         }
         // if (event.message && event.message.attachments) {
@@ -169,14 +169,18 @@ function findEnvironmentEvents(sender) {
 
 function findHealthEvents(sender) {
     let link1 = "https://www.facebook.com/events/1795108914099674/"
+    let link2 = "https://www.facebook.com/events/1733465790311537/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
+    sendTextMessage(sender, link2);
 }
 
 function findPovertyEvents(sender) {
-    let link1 = "https://www.facebook.com/events/334490960257445/"
+    let link1 = "https://www.facebook.com/events/133473113797314/"
+    let link2 = "https://www.facebook.com/events/187959071608479/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
+    sendTextMessage(sender, link2);
 }
 
 function sendLocationRequest(sender) {
@@ -234,13 +238,35 @@ function sendResponse(sender, data, callback) {
         console.log(sender)
       } else {
         console.log("Message successfully sent")
-        console.log(response)
+        if (typeof callback === "function") {
+          sendAction(sender, "typing_on")
+          setTimeout(callback, 2000)
+        }
       }
   })
-  if (typeof callback === "function") {
-       callback();
-   }
 }
+
+function sendAction(sender, action) {
+  let senderAction = data
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+          recipient: {id:sender},
+          sender_action: senderAction,
+      }
+  }, function(error, response, body) {
+      if (error) {
+        console.log('Error sending messages: ', error)
+      } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+      } else {
+        console.log("Message successfully sent")
+      }
+  })
+}
+
 
 function sendTextMessage(sender, text, callback) {
     sendResponse(sender, { text:text }, callback);
