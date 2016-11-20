@@ -88,14 +88,6 @@ app.post('/webhook/', function (req, res) {
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
         }
-        else if(event.message){
-            sendTextMessage(sender, "sdfsadf")
-            sendTextMessage(sender, JSON.stringify(event));
-            sendTextMessage(sender, JSON.stringify(event.message))
-
-        }
-
-
         if (event.message && event.message.attachments) {
           if(even.message.attachments.type === "location") {
             console.log(event.message.attachment)
