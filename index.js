@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-
+const fs = require('fs');
 
 
 app.set('port', (process.env.PORT || 5000))
@@ -29,7 +29,15 @@ app.get('/site', function (req, res) {
 
 app.post('/createEvent', function(req, res) {
     console.log(req.body)
+    fs.writeFile("/webapp/events.json", JSON.stringify(req.body) , function(err) {
+        if(err) {
+            return console.log(err);
+        }
+
+        console.log("The file was saved!");
+    }); 
     res.sendFile('index.html')
+
 })
 
 // app.post('/createEvent', function(req, res) {
