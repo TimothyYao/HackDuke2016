@@ -65,15 +65,15 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Environment") {
-                sendTextMessage(sender, "You picked environment!")
+                findEnvironmentEvents(sender)
                 continue
             }
             if (text === "Health") {
-                sendTextMessage(sender, "You picked health!")
+                findHealthEvents(sender)
                 continue
             }
             if (text === "Poverty") {
-                sendTextMessage(sender, "You picked poverty!")
+                findPovertyEvents(sender)
                 continue
             }
             if (lowerText === 'help') {
@@ -81,8 +81,8 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (lowerText === 'location') {
-              sendLocationRequest(sender);
-              continue
+                sendLocationRequest(sender);
+                continue
             }
             if (lowerText === 'generic') {
                 sendGenericMessage(sender)
@@ -125,6 +125,23 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
+
+function findEnvironmentEvents(sender) {
+    sendLocationRequest(sender)
+
+}
+
+function findHealthEvents(sender) {
+    sendLocationRequest(sender)
+
+    let link1 = "https://www.facebook.com/events/1795108914099674/";
+    sendTextMessage(sender, "Here's some events that I found!")
+    sendTextMessage(sender, link1);
+}
+
+function findPovertyEvents(sender) {
+    sendLocationRequest(sender)
+}
 
 function sendLocationRequest(sender) {
   let messageData = {
