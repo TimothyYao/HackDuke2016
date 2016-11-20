@@ -206,7 +206,8 @@ function sendResponse(sender, data, callback) {
       }
   })
   if (typeof callback === "function") {
-       callback();
+        console.log("CALLBACKKKKKKKKKKKKKK")
+        callback();
    }
 }
 
