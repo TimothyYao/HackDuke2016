@@ -41,6 +41,16 @@ app.post('/webhook/', function (req, res) {
         if (event.message) {
           console.log(event.message)
           if (event.message.text) {
+
+            let fs = require('fs')
+            fs.writeFile("preferences.txt", "this is a test", function(err) {
+                if (err) {
+                    return console.log(err)
+                }
+
+                console.log("File saved")
+            })
+
             let text = event.message.text
             console.log("sender is :" + sender)
 
