@@ -61,7 +61,7 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                setTimeout(sendServiceOptions(sender), 100000)
+                setTimeout(function() { sendServiceOptions(sender) }, 1000)
                 continue
             }
             if (text === "Environment") {
