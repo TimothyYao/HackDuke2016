@@ -28,7 +28,7 @@ app.get('/site', function (req, res) {
 
 
 app.post('/createEvent', function(req, res) {
-    console.log(req.body);
+    console.log(req.body.eventName);
 })
 
 // app.post('/createEvent', function(req, res) {
