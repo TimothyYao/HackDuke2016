@@ -162,6 +162,8 @@ function sendResponse(sender, data, callback) {
         console.log('Error sending messages: ', error)
       } else if (response.body.error) {
         console.log('Error: ', response.body.error)
+        console.log(data)
+        console.log(sender)
       } else {
         console.log("Message successfully sent")
       }
