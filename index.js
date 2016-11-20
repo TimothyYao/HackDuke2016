@@ -255,7 +255,7 @@ function sendResponse(sender, data, callback) {
 }
 
 function sendAction(sender, action) {
-  let senderAction = data
+  let senderAction = action
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
