@@ -41,6 +41,15 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text
             console.log(sender)
+
+            let lowerText = text.toLowerCase();
+            if (lowerText.includes("hello") || lowerText.includes("hi")) {
+                var firstName = getFirstName(sender)
+                sendTextMessage(sender, "Hello, " + firstName)
+                sendServiceOptions(sender);
+                continue
+            }
+
             // if (text === 'response') {
             //   message = {
             //     "text":"Pick a color:",
@@ -72,11 +81,6 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            if (text.includes("hello")) {
-                var firstName = getFirstName(sender)
-                sendTextMessage(sender, "Hello, " + firstName)
-                continue
-            }
             // if (attached && (attached.payload.type === "location")) {
             //     sendGenericMessage(sender)
             //     continue
@@ -92,6 +96,59 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
+
+function sendServiceOptions(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "First card",
+                    "subtitle": "Element #1 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "buttons": [{
+                        "type": "Environment",
+                        "url": "Postback",
+                        "title": "environment"
+                    }, {
+                        "type": "Health",
+                        "title": "health",
+                        "payload": "Payload for first element in a generic bubble",
+                    }, {
+                        "type": "Poverty",
+                        "title": "poverty",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
 
 function sendResponse(sender, data, callback) {
   let messageData = data
