@@ -76,10 +76,10 @@ app.post('/webhook/', function (req, res) {
           }
           if(event.message.attachments) {
             console.log("message has an attachment")
-              lat = event.message.attachments[0].payload.coordinates.lat
-              lng = event.message.attachments[0].payload.coordinates.long
+            let lat = event.message.attachments[0].payload.coordinates.lat
+            let long = event.message.attachments[0].payload.coordinates.long
 
-              sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
           }
         }
         // if (event.message && event.message.attachments) {
