@@ -111,8 +111,8 @@ app.post('/webhook/', function (req, res) {
             let lowerText = text.toLowerCase();
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
-                sendTextMessage(sender, "Hello, " + firstName)
-                setTimeout(function() { sendLocationRequest(sender) }, 1000)
+                sendTextMessage(sender, "Hello, " + firstName, sendLocationRequest(sender))
+                // setTimeout(function() { sendLocationRequest(sender) }, 1000)
                 setTimeout(function() { sendServiceOptions(sender) }, 1000)
                 continue
             }
@@ -261,8 +261,8 @@ function sendResponse(sender, data, callback) {
    }
 }
 
-function sendTextMessage(sender, text) {
-    sendResponse(sender, { text:text });
+function sendTextMessage(sender, text, callback) {
+    sendResponse(sender, { text:text }, callback);
 }
 
 function sendGenericMessage(sender) {
