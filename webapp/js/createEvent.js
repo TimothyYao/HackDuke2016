@@ -13,7 +13,7 @@
                         min: 2,
                     },
                         notEmpty: {
-                        message: 'Please supply your first name'
+                        message: 'Please supply first name'
                     }
                 }
             },
@@ -23,14 +23,14 @@
                         min: 2,
                     },
                     notEmpty: {
-                        message: 'Please supply your last name'
+                        message: 'Please supply last name'
                     }
                 }
             },
             email: {
                 validators: {
                     notEmpty: {
-                        message: 'Please supply your email address'
+                        message: 'Please supply email address'
                     },
                     emailAddress: {
                         message: 'Please supply a valid email address'
@@ -40,7 +40,7 @@
             phone: {
                 validators: {
                     notEmpty: {
-                        message: 'Please supply your phone number'
+                        message: 'Please supply phone number'
                     },
                     phone: {
                         country: 'US',
@@ -54,7 +54,7 @@
                         min: 8,
                     },
                     notEmpty: {
-                        message: 'Please supply your street address'
+                        message: 'Please supply street address'
                     }
                 }
             },
@@ -64,21 +64,21 @@
                         min: 4,
                     },
                     notEmpty: {
-                        message: 'Please supply your city'
+                        message: 'Please supply city'
                     }
                 }
             },
             state: {
                 validators: {
                     notEmpty: {
-                        message: 'Please select your state'
+                        message: 'Please select state'
                     }
                 }
             },
             zip: {
                 validators: {
                     notEmpty: {
-                        message: 'Please supply your zip code'
+                        message: 'Please supply zip code'
                     },
                     zipCode: {
                         country: 'US',
@@ -94,7 +94,7 @@
                         message:'Please enter at least 10 characters and no more than 200'
                     },
                     notEmpty: {
-                        message: 'Please supply a description of your project'
+                        message: 'Please supply a description of event'
                     }
                     }
                 }
