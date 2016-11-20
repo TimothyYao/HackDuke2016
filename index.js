@@ -206,14 +206,18 @@ function findEnvironmentEvents(sender) {
 
 function findHealthEvents(sender) {
     let link1 = "https://www.facebook.com/events/1795108914099674/"
+    let link2 = "https://www.facebook.com/events/1733465790311537/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
+    sendTextMessage(sender, link2);
 }
 
 function findPovertyEvents(sender) {
-    let link1 = "https://www.facebook.com/events/334490960257445/"
+    let link1 = "https://www.facebook.com/events/133473113797314/"
+    let link2 = "https://www.facebook.com/events/187959071608479/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
+    sendTextMessage(sender, link2);
 }
 
 function sendLocationRequest(sender) {
