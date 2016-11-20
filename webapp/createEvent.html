@@ -54,23 +54,18 @@
 
 				<input type="text" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
 				 
-<div class="well">
-  <div id="datetimepicker2" class="input-append">
-    <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-</div>
-<script type="text/javascript">
-  $(function() {
-    $('#datetimepicker2').datetimepicker({
-      language: 'en',
-      pick12HourFormat: true
-    });
-  });
-</script>
+				<script type="text/javascript">
+				$(function() {
+				    $('input[name="daterange"]').daterangepicker({
+				        timePicker: true,
+				        timePickerIncrement: 30,
+				        locale: {
+				            format: 'MM/DD/YYYY h:mm A'
+				        }
+				    });
+				});
+				</script>
+
                 <!-- address-line1 input-->
                 <div class="control-group">
                     <label class="control-label">Address Line 1</label>
