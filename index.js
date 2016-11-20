@@ -271,10 +271,10 @@ function sendResponse(sender, data, callback) {
         console.log(sender)
       } else {
         console.log("Message successfully sent")
-        if (typeof callback === "function") {
-          sendAction(sender, "typing_on")
-          setTimeout(callback, 2000)
-        }
+      }
+      if (typeof callback === "function") {
+        // sendAction(sender, "typing_on")
+        setTimeout(callback, 2000)
       }
   })
 }
