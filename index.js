@@ -109,39 +109,19 @@ app.post('/webhook/', function (req, res) {
 
 function sendServiceOptions(sender) {
     let messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Types of Service",
-                    "subtitle": "What type of service are you interested in?",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Environment",
-                        "payload": "Payload for first element in a generic bubble",
-                    }, {
-                        "type": "postback",
-                        "title": "Health",
-                        "payload": "Payload for first element in a generic bubble",
-                    }, {
-                        "type": "postback",
-                        "title": "Poverty",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
-            }
+        "text":"Pick a color:",
+        "quick_replies":[
+        {
+            "content_type":"text",
+            "title":"Red",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+        },
+        {
+            "content_type":"text",
+            "title":"Green",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
         }
+        ]
     }
     sendResponse(sender, messageData);
 }
