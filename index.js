@@ -65,7 +65,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 
-            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 200) + "\"\nType help for more information!")
+            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\"\nType help for more information!")
         }
     }
     res.sendStatus(200)
