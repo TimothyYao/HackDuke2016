@@ -43,10 +43,10 @@ app.post('/webhook/', function (req, res) {
             console.log(sender)
 
             let lowerText = text.toLowerCase();
-            if (lowerText.includes("hello") || lowerText.includes("hi")) {
+            if (lowerText.includes("start")) {
                 var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                sendServiceOptions(sender);
+                sendGenericMessage(sender);
                 continue
             }
 
@@ -88,15 +88,19 @@ app.post('/webhook/', function (req, res) {
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
         }
-        else{
-          sendTextMessage(sender, "this is not text")
-          
 
-        }
         if (event.message && event.message.attachment) {
             console.log(event.message.attachment)
             sendTextMessage(sender, "attachment!!!")
             sendTextMessage(sender, JSON.stringify(event.message.attachment))
+        }
+
+        if(event.message && event.message.attatchment) {
+
+            lat = event.message.attatchments[0].payload.coordinates.lat
+            lng = event.message.attatchments[0].payload.coordinates.long
+
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
         }
     }
     res.sendStatus(200)
