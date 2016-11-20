@@ -25,6 +25,7 @@ app.get('/site', function (req, res) {
 })
 
 app.post('/createEvent', function(req, res) {
+  console.log('hello');
   processFormFieldsIndividual(req, res);
 })
 
