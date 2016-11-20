@@ -140,7 +140,7 @@ app.post('/webhook/', function (req, res) {
             let long = event.message.attachments[0].payload.coordinates.long
 
             sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
-            setTimeout(function { sendServiceOptions(sender) }, 2000)
+            setTimeout(function() { sendServiceOptions(sender) }, 2000)
             // sendServiceOptions(sender);
           }
         }
