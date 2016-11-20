@@ -120,6 +120,7 @@ app.post('/webhook/', function (req, res) {
               setTimeout(function() {
                 sendTextMessage(sender, "helloo")
               }, 3000)
+              continue
             }
             if (lowerText === 'location') {
                 sendLocationRequest(sender);
@@ -255,7 +256,7 @@ function sendResponse(sender, data, callback) {
 }
 
 function sendAction(sender, action) {
-  let senderAction = data
+  let senderAction = action
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
