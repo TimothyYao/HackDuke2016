@@ -112,12 +112,16 @@ app.post('/webhook/', function (req, res) {
         var sender = event.sender.id
         // console.log("event recieved: ")
         // console.log(event)
-        if (event.delivery) {
-          console.log("message delivered")
-        }
+        // if (event.delivery) {
+        //   console.log("message delivered")
+        // }
         if (event.message) {
           console.log("message recieved: ")
           console.log(event.message)
+          if (event.message.is_echo) {
+            console.log("message sent")
+            console.log(event.message)
+          }
           if (event.message.text) {
 
             let text = event.message.text
