@@ -184,5 +184,4 @@ function getFirstName(sender) {
         }
         return body;
     })
-    return "asdf"
 }
