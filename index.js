@@ -61,8 +61,9 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                setTimeout(sendServiceOptions(sender), 3000);
-                setTimeout(sendLocationRequest(sender), 3000);
+                setTimeout(sendServiceOptions(sender, function() {
+                    sendLocationRequest(sender)
+                }), 3000)
                 continue
             }
             if (lowerText === 'help') {
@@ -115,7 +116,7 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 
-function sendLocationRequest(sender) {
+function sendLocationRequest(sender, callback) {
   let messageData = {
     "text":"Please share your location:",
     "quick_replies":[
@@ -125,6 +126,7 @@ function sendLocationRequest(sender) {
     ]
   }
   sendResponse(sender, messageData);
+  callback();
 }
 
 function sendServiceOptions(sender) {
