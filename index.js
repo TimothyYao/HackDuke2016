@@ -65,8 +65,21 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                setTimeout(sendServiceOptions(sender), 3000);
-                setTimeout(sendLocationRequest(sender), 3000);
+                setTimeout(function() { sendServiceOptions(sender) }, 1000)
+                continue
+            }
+            if (text === "Environment") {
+                sendLocationRequest(sender);
+                setTimeout(function() { findEnvironmentEvents(sender) }, 1000)
+                continue
+            }
+            if (text === "Health") {
+                sendLocationRequest(sender);
+                setTimeout(function() { findHealthEvents(sender) }, 1000)
+                continue
+            }
+            if (text === "Poverty") {
+                findPovertyEvents(sender)
                 continue
             }
             if (lowerText === 'help') {
@@ -74,8 +87,8 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (lowerText === 'location') {
-              sendLocationRequest(sender);
-              continue
+                sendLocationRequest(sender);
+                continue
             }
             if (lowerText === 'generic') {
                 sendGenericMessage(sender)
@@ -118,6 +131,24 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
+
+function findEnvironmentEvents(sender) {
+    let link1 = "https://www.facebook.com/events/334490960257445/"
+    sendTextMessage(sender, "Here's some events that I found!")
+    sendTextMessage(sender, link1);
+}
+
+function findHealthEvents(sender) {
+    let link1 = "https://www.facebook.com/events/1795108914099674/"
+    sendTextMessage(sender, "Here's some events that I found!")
+    sendTextMessage(sender, link1);
+}
+
+function findPovertyEvents(sender) {
+    let link1 = "https://www.facebook.com/events/334490960257445/"
+    sendTextMessage(sender, "Here's some events that I found!")
+    sendTextMessage(sender, link1);
+}
 
 function sendLocationRequest(sender) {
   let messageData = {
