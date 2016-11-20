@@ -120,7 +120,7 @@ function sendServiceOptions(sender) {
                 "elements": [{
                     "title": "Types of Service",
                     "subtitle": "What are you intrested in?",
-                    "image_url": "http://uumilwaukee.org/wp-content/uploads/2015/07/volunteer-logo-sized-to-6.9x3.jpg",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "Environment",
