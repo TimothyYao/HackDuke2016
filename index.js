@@ -100,10 +100,12 @@ app.post('/webhook/', function (req, res) {
         }
 
 
-        if (event.message && event.message.attachment) {
+        if (event.message && event.message.attachments) {
+          if(even.message.attachments.type === "location") {
             console.log(event.message.attachment)
             sendTextMessage(sender, "attachment!!!")
-            sendTextMessage(sender, JSON.stringify(event.message.attachment))
+            sendTextMessage(sender, event.message.attachments.payload.coordinates);
+        }
         }
 
         if(event.message && event.message.attatchment) {
