@@ -107,8 +107,8 @@ app.post('/webhook/', function (req, res) {
                 // setTimeout(function() { sendServiceOptions(sender) }, 1000)
                 continue
             }
-            if (text === "cancel") {
-              sendTextMessage(sender, ':")')
+            if (lowerText === "cancel") {
+              sendTextMessage(sender, 'bye :")')
               continue
             }
             if (text === "Environment") {
@@ -246,6 +246,11 @@ function sendServiceOptions(sender, text) {
               "content_type":"text",
               "title":"Poverty",
               "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POVERTY"
+          }
+          {
+              "content_type":"text",
+              "title":"Cancel",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_Cancel"
           }
         ]
     }
