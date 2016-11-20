@@ -12,17 +12,16 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 // Process application/json
 app.use(bodyParser.json())
-app.use(express.static(__dirname + '/webapp'));
+app.use(express.static(__dirname));
 // Index route
 app.get('/', function (req, res) {
 
     //res.render(render);
-    res.sendFile('index.html');
+    res.sendFile('webapp/index.html');
 
 })
-app.use(express.static(__dirname + '/site'));
 app.get('/site', function (reg, res) {
-  res.sendFile('index.html')
+  res.sendFile('site/index.html')
 })
 
 // for Facebook verification
