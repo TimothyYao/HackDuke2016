@@ -61,7 +61,7 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                setTimeout(sendServiceOptions(sender), 1000)
+                setTimeout(sendServiceOptions(sender), 100000)
                 continue
             }
             if (text === "Environment") {
@@ -70,7 +70,8 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Health") {
-                findHealthEvents(sender)
+                sendLocationRequest(sender);
+                setTimeout(findHealthEvents(sender), 1000)
                 continue
             }
             if (text === "Poverty") {
@@ -128,13 +129,9 @@ app.post('/webhook/', function (req, res) {
 })
 
 function findEnvironmentEvents(sender) {
-    sendLocationRequest(sender)
-
 }
 
 function findHealthEvents(sender) {
-    sendLocationRequest(sender)
-
     let link1 = "https://www.facebook.com/events/1795108914099674/";
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
