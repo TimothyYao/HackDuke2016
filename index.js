@@ -97,36 +97,37 @@ app.post('/webhook/', function (req, res) {
         // }
         // }
 
-        //if(event.message && event.message.attatchment) {
+        if(event.message && event.message.attatchment) {
 
-        //    lat = event.message.attatchments[0].payload.coordinates.lat
-        //    lng = event.message.attatchments[0].payload.coordinates.long
+            lat = event.message.attatchments[0].payload.coordinates.lat
+            lng = event.message.attatchments[0].payload.coordinates.long
 
-        //    sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
-        //}
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+        }
     }
     res.sendStatus(200)
 })
 
 function sendServiceOptions(sender) {
     let messageData = {
-        "message":{
-            "text":"Pick a color:",
-            "quick_replies":[
-            {
-                "content_type":"text",
-                "title":"Red",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-                "image_url":"http://petersfantastichats.com/img/red.png"
-            },
-            {
-                "content_type":"text",
-                "title":"Green",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-                "image_url":"http://petersfantastichats.com/img/green.png"
-            }
-            ]
+        "text":"What type of service are you interested in?",
+        "quick_replies":[
+        {
+            "content_type":"text",
+            "title":"Environment",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ENVIRONMENT"
+        },
+        {
+            "content_type":"text",
+            "title":"Health",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_HEALTH"
+        },
+        {
+            "content_type":"text",
+            "title":"Poverty",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POVERTY"
         }
+        ]
     }
     sendResponse(sender, messageData);
 }
