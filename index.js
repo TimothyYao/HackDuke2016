@@ -50,6 +50,10 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 
+            if (lowerText === 'Environment') {
+                sendTextMessage(sender, "You picked Environment!");
+            }
+
             // if (text === 'response') {
             //   message = {
             //     "text":"Pick a color:",
@@ -70,8 +74,8 @@ app.post('/webhook/', function (req, res) {
             //   continue
             // }
             if (text === 'help') {
-              sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
-              continue
+                sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
+                continue
             }
             if (text === 'Generic') {
                 sendGenericMessage(sender)
@@ -121,7 +125,7 @@ function sendServiceOptions(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "Types of Service",
-                    "subtitle": "What are you intrested in?",
+                    "subtitle": "What type of service are you interested in?",
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "postback",
