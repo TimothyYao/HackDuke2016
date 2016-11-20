@@ -226,7 +226,7 @@ function sendGenericMessage(sender) {
 }
 
 function getFirstName(sender) {
-    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name&access_token=' + token;
+    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender.id + '?fields=first_name&access_token=' + token;
     request({
         url: queryUrl,
         method: 'GET',
