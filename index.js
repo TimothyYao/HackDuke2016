@@ -112,7 +112,7 @@ app.post('/webhook/', function (req, res) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName, sendLocationRequest(sender))
                 // setTimeout(function() { sendLocationRequest(sender) }, 1000)
-                setTimeout(function() { sendServiceOptions(sender) }, 1000)
+                // setTimeout(function() { sendServiceOptions(sender) }, 1000)
                 continue
             }
             if (text === "Environment") {
@@ -155,7 +155,7 @@ app.post('/webhook/', function (req, res) {
             let lat = event.message.attachments[0].payload.coordinates.lat
             let long = event.message.attachments[0].payload.coordinates.long
 
-            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
           }
         }
         // if (event.message && event.message.attachments) {
