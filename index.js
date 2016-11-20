@@ -43,10 +43,10 @@ app.post('/webhook/', function (req, res) {
             console.log(sender)
 
             let lowerText = text.toLowerCase();
-            if (lowerText.includes("hello") || lowerText.includes("hi")) {
+            if (lowerText.includes("start")) {
                 var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                sendServiceOptions(sender);
+                sendGenericMessage(sender);
                 continue
             }
 
