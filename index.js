@@ -65,8 +65,8 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Environment") {
-                sendLocationRequest(sender, function() { findEnvironmentEvents(sender) });
-                // setTimeout(function() { findEnvironmentEvents(sender) }, 1000)
+                sendLocationRequest(sender);
+                setTimeout(function() { findEnvironmentEvents(sender) }, 1000)
                 continue
             }
             if (text === "Health") {
@@ -146,7 +146,7 @@ function findPovertyEvents(sender) {
     sendTextMessage(sender, link1);
 }
 
-function sendLocationRequest(sender, callback) {
+function sendLocationRequest(sender) {
   let messageData = {
     "text":"Please share your location:",
     "quick_replies":[
@@ -155,8 +155,7 @@ function sendLocationRequest(sender, callback) {
       }
     ]
   }
-  sendResponse(sender, messageData)
-  callback()
+  sendResponse(sender, messageData);
 }
 
 function sendServiceOptions(sender) {
@@ -180,7 +179,7 @@ function sendServiceOptions(sender) {
           }
         ]
     }
-    sendResponse(sender, messageData)
+    sendResponse(sender, messageData);
 }
 
 function sendResponse(sender, data, callback) {
