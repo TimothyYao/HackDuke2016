@@ -170,6 +170,7 @@ function getFirstName(sender) {
         method: 'GET',
         qs: sender,
     }, function(error, response, body) {
-        return "friend!";
+        
     })
+    return "friend!";
 }
