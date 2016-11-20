@@ -16,7 +16,8 @@ app.use(bodyParser.json())
 // Index route
 app.get('/site', function (req, res) {
 
-    res.render(render);
+    //res.render(render);
+    res.sendFile(path.join(__dirname+'/site/index.html'));
 
 })
 
