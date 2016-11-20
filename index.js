@@ -107,7 +107,7 @@ app.post('/webhook/', function (req, res) {
                 // setTimeout(function() { sendServiceOptions(sender) }, 1000)
                 continue
             }
-            if (lowerText === "cancel") {
+            if (lowerText === "cancel" || lowerText === "done") {
               sendTextMessage(sender, 'bye :")')
               continue
             }
@@ -207,7 +207,7 @@ app.post('/webhook/', function (req, res) {
 function findEnvironmentEvents(sender) {
     let link1 = "https://www.facebook.com/events/334490960257445/"
     sendTextMessage(sender, link1);
-    setTimeout(function() { sendServiceOptions(sender, "Would you like to view other types of services?") }, 1000)
+    setTimeout(function() { sendServiceOptions(sender, "Would you like to view other types of services? (cancel to quit)") }, 1000)
 }
 
 function findHealthEvents(sender) {
@@ -215,7 +215,7 @@ function findHealthEvents(sender) {
     let link2 = "https://www.facebook.com/events/1733465790311537/"
     sendTextMessage(sender, link1);
     sendTextMessage(sender, link2);
-    setTimeout(function() { sendServiceOptions(sender, "Would you like to view other types of services?") }, 1000)
+    setTimeout(function() { sendServiceOptions(sender, "Would you like to view other types of services? (cancel to quit)") }, 1000)
 }
 
 function findPovertyEvents(sender) {
@@ -223,7 +223,7 @@ function findPovertyEvents(sender) {
     let link2 = "https://www.facebook.com/events/187959071608479/"
     sendTextMessage(sender, link1);
     sendTextMessage(sender, link2);
-    setTimeout(function() { sendServiceOptions(sender, "Would you like to view other types of services?") }, 1000)
+    setTimeout(function() { sendServiceOptions(sender, "Would you like to view other types of services? (cancel to quit)") }, 1000)
 }
 
 function sendLocationRequest(sender) {
