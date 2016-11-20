@@ -115,6 +115,12 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'Type \"start\" to begin your search!', sendTextMessage(sender, '1', sendTextMessage(sender, '2')))
                 continue
             }
+            if (lowerText === 'talk to me') {
+              sendAction(sender, "typing_on")
+              setTimeout(function() {
+                sendTextMessage(sender, )
+              }, 3000)
+            }
             if (lowerText === 'location') {
                 sendLocationRequest(sender);
                 continue
