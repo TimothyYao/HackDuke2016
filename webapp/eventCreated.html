@@ -9,6 +9,8 @@
 	    reader.onreadystatechange = displayContents;
 	    reader.send(null);
 
+	    console.log('print')
+
 		function displayContents() {
 			console.log('plis')
 		    if(reader.readyState==4) {
