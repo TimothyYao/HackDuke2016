@@ -72,11 +72,11 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            if (text.includes("hello")) {
-                var firstName = getFirstName(sender)
-                sendTextMessage(sender, "Hello, " + firstName)
-                continue
-            }
+            // if (text.includes("hello")) {
+            //     var firstName = getFirstName(sender)
+            //     sendTextMessage(sender, "Hello, " + firstName)
+            //     continue
+            // }
             if (attached && (attached.payload.type === "location")) {
                 sendGenericMessage(sender)
                 continue
