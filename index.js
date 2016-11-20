@@ -40,8 +40,9 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
+            let attached = event.message.attachment
             if (text === 'help') {
-              sendTextMessage(sender, "Sorry, the help page has not been updated yet :c")
+              sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
             }
             if (text === 'Generic') {
@@ -52,9 +53,12 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+            if (attached && (attached.payload.elements.element.title === "Your Location")) {
+                sendGenericMessage(sender)
+                continue
+            }
 
             sendTextMessage(sender, "Could not understand " + text.substring(0, 200) + "\nType help for more information")
-
         }
     }
     res.sendStatus(200)
