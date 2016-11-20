@@ -40,8 +40,9 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
+            let attached = event.message.attachment
             if (text === 'help') {
-              sendTextMessage(sender, "Sorry, the help page has not been updated yet :c")
+              sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
             }
             if (text === 'Generic') {
@@ -52,33 +53,48 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+<<<<<<< HEAD
             if (text.includes("hello")) {
                 getUserData(sender)
                 continue
             }
+=======
+            if (attached && (attached.payload.elements.element.title === "Your Location")) {
+                sendGenericMessage(sender)
+                continue
+            }
+
+>>>>>>> fdbe4960a25084b6f1d852430b2c1d09d3eb18b5
             sendTextMessage(sender, "Could not understand " + text.substring(0, 200) + "\nType help for more information")
         }
     }
     res.sendStatus(200)
 })
 
+function sendResponse(sender, data, callback) {
+  let messageData = data
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+          recipient: {id:sender},
+          message: messageData,
+      }
+  }, function(error, response, body) {
+      if (error) {
+          console.log('Error sending messages: ', error)
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error)
+      }
+  })
+  if (typeof callback === "function") {
+       callback();
+   }
+}
+
 function sendTextMessage(sender, text) {
-    let messageData = { text:text }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+    sendResponse(sender, { text:text });
 }
 
 function sendGenericMessage(sender) {
