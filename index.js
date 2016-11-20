@@ -128,6 +128,10 @@ function sendServiceOptions(sender) {
                         "type": "postback",
                         "title": "Health",
                         "payload": "Payload for first element in a generic bubble",
+                    }, {
+                        "type": "postback",
+                        "title": "Health",
+                        "payload": "Payload for first element in a generic bubble",
                     }],
                 }, {
                     "title": "Second card",
