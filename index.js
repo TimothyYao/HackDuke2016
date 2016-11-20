@@ -66,7 +66,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (text === "Environment") {
                 sendLocationRequest(sender);
-                findEnvironmentEvents(sender)
+                setTimeout(findEnvironmentEvents(sender), 1000)
                 continue
             }
             if (text === "Health") {
