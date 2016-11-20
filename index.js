@@ -116,7 +116,7 @@ function sendServiceOptions(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "generic",
+                "template_type": "button",
                 "elements": [{
                     "title": "Types of Service",
                     "subtitle": "What are you intrested in?",
