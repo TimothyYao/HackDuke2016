@@ -25,7 +25,10 @@ a.active {
   height: 150px;
   width: 150px;
 }
-
+#servobotGif{
+  height: 300px;
+  align: middle;
+}
 h1,
 h2,
 h3,
