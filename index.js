@@ -5,23 +5,6 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '209090596166479',
-      xfbml      : true,
-      version    : 'v2.8'
-  });
-    FB.AppEvents.logPageView();
-};
-
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -58,7 +41,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message) {
           if (event.message.text) {
             let text = event.message.text
-            console.log("sender is: " + sender)
+            console.log("sender is :" + sender)
 
             let lowerText = text.toLowerCase();
             if (lowerText.includes("start")) {
@@ -90,7 +73,6 @@ app.post('/webhook/', function (req, res) {
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
           }
-          console.log(event.message);
           if(event.message.attachment) {
             console.log("message has an attachment")
               lat = event.message.attachments[0].payload.coordinates.lat
