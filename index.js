@@ -158,8 +158,7 @@ function sendLocationRequest(sender, callback) {
       }
     ]
   }
-  sendResponse(sender, messageData)
-  callback()
+  sendResponse(sender, messageData, callback)
 }
 
 function sendServiceOptions(sender) {
