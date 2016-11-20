@@ -5,14 +5,14 @@
 	<script>
 		var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
-		function loadFile() {
-		    reader.open('get', 'events.txt', true); 
-		    reader.onreadystatechange = displayContents;
-		    reader.send(null);
-		}
+	    reader.open('get', 'events.txt', true); 
+	    reader.onreadystatechange = displayContents;
+	    reader.send(null);
 
 		function displayContents() {
+			console.log('plis')
 		    if(reader.readyState==4) {
+		    	console.log('pls print this out')
 		    	console.log(reader.responseText);
 		        var el = document.getElementById('logistics');
 		        el.innerHTML = reader.responseText;
