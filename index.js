@@ -129,7 +129,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (lowerText === 'help') {
-                sendTextMessage(sender, 'Type \"start\" to begin your search!')
+                sendTextMessage(sender, 'Type \"start\" to begin your search, or try visiting our website:\nhttps://servobot.herokuapp.com/site/')
                 continue
             }
             if (lowerText === 'talk to me') {
