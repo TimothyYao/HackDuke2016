@@ -41,7 +41,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text
             if (text === 'help') {
-              sendTextMessage(sender, "Sorry, the help page has not been updated yet :c")
+              sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
             }
             if (text === 'Generic') {
