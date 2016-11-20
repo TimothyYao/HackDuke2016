@@ -53,7 +53,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
                 continue
             }
-            if (lowerTet === 'location') {
+            if (lowerText === 'location') {
               sendLocationRequest(sender);
               continue
             }
