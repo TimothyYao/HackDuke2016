@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+	
+	<script>
+	    $(function() {
+		   var people = [];
+
+		   $.getJSON('events.json', function(data) {
+		      //  $.each(data.eventName, function(i, f) {
+		      //     var tblRow = "<tr>" + "<td>" + f.firstName + "</td>" +
+		      //      "<td>" + f.lastName + "</td>" + "<td>" + f.job + "</td>" + "<td>" + f.roll + "</td>" + "</tr>"
+		      //      $(tblRow).appendTo("#userdata tbody");
+		     	// });
+		     	console.log(data);
+		   });
+
+		});
+	</script>
+
+
+	</head>
+
+	<body>
+			<h1> Thanks for creating the event! </h1>
+			<p class="logistics">
+
+			</p>
+
+			<p> Would you like create a facebook event? </p>
+
+	</body>
+
+</html>

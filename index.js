@@ -36,7 +36,7 @@ app.post('/createEvent', function(req, res) {
 
         console.log("The file was saved!");
     });
-    res.sendFile('index.html')
+    res.sendFile(__dirname + '/webapp/eventCreated.html')
 
 })
 
