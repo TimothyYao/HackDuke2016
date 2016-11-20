@@ -111,21 +111,21 @@ function sendServiceOptions(sender) {
     let messageData = {
         "text":"What type of service are you interested in?",
         "quick_replies":[
-        {
-            "content_type":"text",
-            "title":"Environment",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ENVIRONMENT"
-        },
-        {
-            "content_type":"text",
-            "title":"Health",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_HEALTH"
-        },
-        {
-            "content_type":"text",
-            "title":"Poverty",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POVERTY"
-        }
+          {
+              "content_type":"text",
+              "title":"Environment",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ENVIRONMENT"
+          },
+          {
+              "content_type":"text",
+              "title":"Health",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_HEALTH"
+          },
+          {
+              "content_type":"text",
+              "title":"Poverty",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POVERTY"
+          }
         ]
     }
     sendResponse(sender, messageData);
@@ -213,7 +213,7 @@ function getFirstName(sender) {
         method: 'GET',
         qs: sender,
     }, function(error, response, body) {
-        
+
     })
     return "friend!";
 }
