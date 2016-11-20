@@ -26,6 +26,11 @@ app.get('/site', function (req, res) {
   res.sendFile('site/index.html')
 })
 
+
+app.post('/createEvent', function(req, res) {
+    console.log(req.body);
+})
+
 // app.post('/createEvent', function(req, res) {
 //   console.log('hello');
 //   processFormFieldsIndividual(req, res);
