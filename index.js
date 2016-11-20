@@ -73,7 +73,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Health") {
-                sendLocationRequest(sender);
+                sendServiceOptions(sender);
                 setTimeout(function() { findHealthEvents(sender) }, 3000)
                 continue
             }
