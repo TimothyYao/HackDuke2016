@@ -54,16 +54,16 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text.includes("hello")) {
-                let firstName = getFirstName(sender)
+                var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
                 continue
             }
-            if (attached && (attached.type === "location")) {
+            if (attached && (attached.payload.type === "location")) {
                 sendGenericMessage(sender)
                 continue
             }
 
-            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\"\nType help for more information!")
+            sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
         }
     }
     res.sendStatus(200)
