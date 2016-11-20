@@ -116,7 +116,7 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 
-function sendLocationRequest(sender, callback) {
+function sendLocationRequest(sender) {
   let messageData = {
     "text":"Please share your location:",
     "quick_replies":[
@@ -125,11 +125,10 @@ function sendLocationRequest(sender, callback) {
       }
     ]
   }
-  sendResponse(sender, messageData);
-  callback();
+  sendResponse(sender, messageData)
 }
 
-function sendServiceOptions(sender) {
+function sendServiceOptions(sender, callback) {
     let messageData = {
         "text":"What type of service are you interested in?",
         "quick_replies":[
@@ -150,7 +149,8 @@ function sendServiceOptions(sender) {
           }
         ]
     }
-    sendResponse(sender, messageData);
+    sendResponse(sender, messageData)
+    callback()
 }
 
 function sendResponse(sender, data, callback) {
