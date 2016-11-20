@@ -41,25 +41,25 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text
             let attached = event.message.attachment
-            if (text === 'test quick response') {
-              message = {
-                "text":"Pick a color:",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Red",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Green",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                  }
-                ]
-              }
-              sendResponse(sender, message)
-              continue
-            }
+            // if (text === 'test quick response') {
+            //   message = {
+            //     "text":"Pick a color:",
+            //     "quick_replies":[
+            //       {
+            //         "content_type":"text",
+            //         "title":"Red",
+            //         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Green",
+            //         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            //       }
+            //     ]
+            //   }
+            //   sendResponse(sender, message)
+            //   continue
+            // }
             if (text === 'help') {
               sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
