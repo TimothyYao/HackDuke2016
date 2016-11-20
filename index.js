@@ -182,14 +182,17 @@ app.post('/webhook/', function (req, res) {
           }
           if(event.message.attachments) {
             console.log("message has an attachment")
-            let lat = event.message.attachments[0].payload.coordinates.lat
-            let long = event.message.attachments[0].payload.coordinates.long
+            try {
+              let lat = event.message.attachments[0].payload.coordinates.lat
+              let long = event.message.attachments[0].payload.coordinates.long
 
-            // sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
-            sendAction(sender, "typing_on")
-            setTimeout(function() {
-              sendServiceOptions(sender, "What kind of service option are you interested in?")
-            }, 2000)
+              // sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+              sendAction(sender, "typing_on")
+              setTimeout(function() {
+                sendServiceOptions(sender, "What kind of service option are you interested in?")
+              }, 2000)
+            } catch(err) {
+            }
             // sendServiceOptions(sender);
           }
         }
