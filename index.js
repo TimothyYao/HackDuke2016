@@ -100,13 +100,13 @@ app.post('/webhook/', function (req, res) {
         // }
         // }
 
-        if(event.message && event.message.attatchment) {
+        //if(event.message && event.message.attatchment) {
 
-            lat = event.message.attatchments[0].payload.coordinates.lat
-            lng = event.message.attatchments[0].payload.coordinates.long
+        //    lat = event.message.attatchments[0].payload.coordinates.lat
+        //    lng = event.message.attatchments[0].payload.coordinates.long
 
-            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
-        }
+        //    sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+        //}
     }
     res.sendStatus(200)
 })
