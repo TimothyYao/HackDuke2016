@@ -61,10 +61,11 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                sendServiceOptions(sender);
+                setTimeout(sendServiceOptions(sender), 3000);
+                setTimeout(sendLocationRequest(sender), 3000);
                 continue
             }
-            if (text === 'help') {
+            if (lowerText === 'help') {
                 sendTextMessage(sender, 'Sorry, the help page has not yet been updated :C')
                 continue
             }
@@ -72,11 +73,11 @@ app.post('/webhook/', function (req, res) {
               sendLocationRequest(sender);
               continue
             }
-            if (text === 'Generic') {
+            if (lowerText === 'generic') {
                 sendGenericMessage(sender)
                 continue
             }
-            if (text.includes("something")) {
+            if (lowerText.includes("something")) {
                 sendGenericMessage(sender)
                 continue
             }
