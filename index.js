@@ -271,6 +271,7 @@ function sendResponse(sender, data, callback) {
         console.log(sender)
       } else {
         console.log("Message successfully sent")
+        console.log(response)
       }
   })
   if (typeof callback === "function") {
