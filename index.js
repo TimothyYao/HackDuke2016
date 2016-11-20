@@ -149,8 +149,7 @@ function sendServiceOptions(sender, callback) {
           }
         ]
     }
-    sendResponse(sender, messageData)
-    callback()
+    sendResponse(sender, messageData, callback)
 }
 
 function sendResponse(sender, data, callback) {
