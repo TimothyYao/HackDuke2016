@@ -209,10 +209,10 @@ function sendGenericMessage(sender) {
 
 function getFirstName(sender) {
     // let queryUrl = 'https://graph.facebook.com/v2.6/' + sender.id + '?fields=first_name&access_token=' + token;
-    var userID = "/"+sender.id;
-    FB.api(userID, {fields: 'last_name'}, function(response) {
-      console.log(response)
-    });
+    // var userID = "/"+sender.id;
+    // FB.api(userID, {fields: 'last_name'}, function(response) {
+    //   console.log(response)
+    // });
     // request({
     //     url: queryUrl,
     //     method: 'GET',
