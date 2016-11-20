@@ -53,7 +53,7 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            if (attached && (attached.payload.elements.element.title === "Your Location")) {
+            if (attached && (attached.type === "location")) {
                 sendGenericMessage(sender)
                 continue
             }
