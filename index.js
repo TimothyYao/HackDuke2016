@@ -63,7 +63,19 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Hello, " + firstName)
                 setTimeout(sendServiceOptions(sender, function() {
                     sendLocationRequest(sender)
-                }), 3000)
+                }), 10000)
+                continue
+            }
+            if (text === "Environment") {
+                sendTextMessage(sender, "You picked environment!")
+                continue
+            }
+            if (text === "Health") {
+                sendTextMessage(sender, "You picked health!")
+                continue
+            }
+            if (text === "Poverty") {
+                sendTextMessage(sender, "You picked poverty!")
                 continue
             }
             if (lowerText === 'help') {
@@ -125,10 +137,10 @@ function sendLocationRequest(sender) {
       }
     ]
   }
-  sendResponse(sender, messageData)
+  sendResponse(sender, messageData);
 }
 
-function sendServiceOptions(sender, callback) {
+function sendServiceOptions(sender) {
     let messageData = {
         "text":"What type of service are you interested in?",
         "quick_replies":[
@@ -149,7 +161,7 @@ function sendServiceOptions(sender, callback) {
           }
         ]
     }
-    sendResponse(sender, messageData, callback)
+    sendResponse(sender, messageData);
 }
 
 function sendResponse(sender, data, callback) {
