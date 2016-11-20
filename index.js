@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                sendGenericMessage(sender);
+                sendServiceOptions(sender);
                 continue
             }
 
@@ -118,12 +118,16 @@ function sendServiceOptions(sender) {
                     "subtitle": "Element #1 of an hscroll",
                     "image_url": "https://scontent-iad3-1.xx.fbcdn.net/v/l/t1.0-9/11148581_10206622212817858_891002715061600633_n.jpg?oh=14c2b1a751e09a5c7e76f2fae2ba48e1&oe=58B7325B",
                     "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
+                        "type": "postback",
                         "title": "Environment"
+                        "payload": "Payload for first element in a generic bubble",
                     }, {
                         "type": "postback",
                         "title": "Health",
+                        "payload": "Payload for first element in a generic bubble",
+                    }, {
+                        "type": "postback",
+                        "title": "Poverty",
                         "payload": "Payload for first element in a generic bubble",
                     }],
                 }, {
