@@ -41,25 +41,6 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text
             console.log(sender)
-            // if (text === 'response') {
-            //   message = {
-            //     text:"Pick a color:",
-            //     // "quick_replies":[
-            //     //   {
-            //     //     "content_type":"text",
-            //     //     "title":"Red",
-            //     //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            //     //   },
-            //     //   {
-            //     //     "content_type":"text",
-            //     //     "title":"Green",
-            //     //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-            //     //   }
-            //     // ]
-            //   }
-            //   sendResponse(sender, message)
-            //   continue
-            // }
             if (text === 'response') {
               message = {
                 "text":"Pick a color:",
@@ -79,8 +60,6 @@ app.post('/webhook/', function (req, res) {
               sendResponse(sender, message)
               continue
             }
->>>>>>> 902ce15a0f34b3b569870e34d29cc6a1383c7f8f
->>>>>>> 4525d650364cc56b01e2817d4dc4ed22005cb313
             if (text === 'help') {
               sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
               continue
