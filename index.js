@@ -108,19 +108,22 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Environment") {
+                sendAction(sender, "typing_on")
                 setTimeout(function() { findEnvironmentEvents(sender) }, 5000)
                 continue
             }
             if (text === "Health") {
+                sendAction(sender, "typing_on")
                 setTimeout(function() { findHealthEvents(sender) }, 5000)
                 continue
             }
             if (text === "Poverty") {
+                sendAction(sender, "typing_on")
                 setTimeout(function() { findPovertyEvents(sender) }, 5000)
                 continue
             }
             if (lowerText === 'help') {
-                sendTextMessage(sender, 'Type \"start\" to begin your search!', sendTextMessage(sender, '1', sendTextMessage(sender, '2')))
+                sendTextMessage(sender, 'Type \"start\" to begin your search!')
                 continue
             }
             if (lowerText === 'talk to me') {
