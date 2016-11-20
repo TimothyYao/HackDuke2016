@@ -148,7 +148,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (lowerText === 'help') {
-                sendTextMessage(sender, 'Type \"start\" to begin your search!', sendTextMessage('1', sendTextMessage('2')))
+                sendTextMessage(sender, 'Type \"start\" to begin your search!', sendTextMessage(sender, '1', sendTextMessage(sender, '2')))
                 continue
             }
             if (lowerText === 'location') {
