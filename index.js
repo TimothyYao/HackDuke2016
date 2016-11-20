@@ -62,7 +62,7 @@ app.post('/webhook/', function (req, res) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
                 setTimeout(sendServiceOptions(sender), 3000);
-                console.log(lowerText);
+                setTimeout(sendLocationRequest(sender), 3000);
                 continue
             }
             if (lowerText === 'help') {
