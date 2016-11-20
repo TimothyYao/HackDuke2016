@@ -256,7 +256,7 @@ function sendServiceOptions(sender, text) {
               "content_type":"text",
               "title":"Poverty",
               "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POVERTY"
-          }
+          },
           {
               "content_type":"text",
               "title":"Cancel",
