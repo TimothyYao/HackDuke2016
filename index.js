@@ -143,6 +143,15 @@ app.post('/webhook/', function (req, res) {
               }, 3000)
               continue
             }
+
+            if (lowerText === 'amazing') {
+              sendAction(sender, "typing_on")
+              setTimeout(function() {
+                sendTextMessage(sender, "amazing")
+              }, 3000)
+              continue
+            }
+
             if (lowerText === 'location') {
                 sendLocationRequest(sender);
                 continue
