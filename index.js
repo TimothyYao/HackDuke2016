@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Index route
-app.get('/site', function (req, res) {
+app.get('/', function (req, res) {
 
     //res.render(render);
-    res.sendFile(path.join(__dirname+'/site/index.html'));
+    res.sendFile(__dirname+'/site/index.html');
 
 })
 
