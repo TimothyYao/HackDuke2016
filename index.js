@@ -86,6 +86,7 @@ app.post('/webhook/', function (req, res) {
         }
         if (event.message && event.message.attachment) {
             console.log(event.message.attachment)
+            sendTextMessage(sender, JSON.stringify(event.message.attachment))
         }
     }
     res.sendStatus(200)
