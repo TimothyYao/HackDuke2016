@@ -118,10 +118,11 @@ function sendServiceOptions(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "button",
+                "template_type": "generic",
                 "elements": [{
                     "title": "Types of Service",
                     "subtitle": "What are you intrested in?",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "Environment",
