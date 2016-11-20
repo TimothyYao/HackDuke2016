@@ -53,6 +53,10 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Sorry, the help page has not yet been updated :C")
                 continue
             }
+            if (lowerTet === 'location') {
+              sendLocationRequest(sender);
+              continue
+            }
             if (text === 'Generic') {
                 sendGenericMessage(sender)
                 continue
@@ -86,6 +90,18 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
+
+function sendLocationRequest(sender) {
+  let messageData = {
+    "text":"Please share your location:",
+    "quick_replies":[
+      {
+        "content_type":"location",
+      }
+    ]
+  }
+  sendResponse(sender, messageData);
+}
 
 function sendServiceOptions(sender) {
     let messageData = {
