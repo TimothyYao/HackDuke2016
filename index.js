@@ -120,6 +120,7 @@ app.post('/webhook/', function (req, res) {
               setTimeout(function() {
                 sendTextMessage(sender, "helloo")
               }, 3000)
+              continue
             }
             if (lowerText === 'location') {
                 sendLocationRequest(sender);
