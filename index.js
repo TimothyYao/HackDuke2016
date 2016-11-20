@@ -54,7 +54,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text.includes("hello")) {
-                let firstName = getFirstName(sender)
+                var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
                 continue
             }
