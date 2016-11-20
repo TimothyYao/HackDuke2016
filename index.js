@@ -38,7 +38,8 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
-        if (event.message && event.message.text) {
+        if (event.message) {
+          if (event.message.text) {
             let text = event.message.text
             console.log(sender)
 
@@ -71,6 +72,14 @@ app.post('/webhook/', function (req, res) {
             // }
 
             sendTextMessage(sender, "Could not understand \"" + text.substring(0, 320) + "\".\nTry typing \"help\" for more information!")
+          }
+          if(event.message.attachment) {
+
+              lat = event.message.attachments[0].payload.coordinates.lat
+              lng = event.message.attachments[0].payload.coordinates.long
+
+              sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long)
+          }
         }
         // if (event.message && event.message.attachments) {
         //   if(even.message.attachments.type === "location") {
