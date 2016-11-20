@@ -104,6 +104,7 @@ app.listen(app.get('port'), function() {
 
 const token = "EAACZBKrK1208BAIOZAlGbHWYEZAP3nZBaFGr8bicww1w6N9hYRaAS5XYKdVXC3qXZBh0OMZADWUc1pz6y9YPyZASQXUkq5Absvt8FtTcah5VwXdGXTsEDS52jU1AaUTpGV0Ptul5WZAZAIzPDPqRumeBmxu4hdOOh4KyFFLHRi6RgtwZDZD"
 
+
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -170,7 +171,8 @@ app.post('/webhook/', function (req, res) {
             let lat = event.message.attachments[0].payload.coordinates.lat
             let long = event.message.attachments[0].payload.coordinates.long
 
-            sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
+            // sendTextMessage(sender, "Your coordinates are: " + lat + ", " + long, sendServiceOptions(sender))
+            sendServiceOptions(sender);
           }
         }
         // if (event.message && event.message.attachments) {
