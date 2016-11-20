@@ -132,6 +132,15 @@ app.post('/webhook/', function (req, res) {
                 setTimeout(function() { findPovertyEvents(sender) }, 3000)
                 continue
             }
+
+            if (text === "amazing") {
+              sendAction(sender, "typing_on")
+              setTimeout(function() {
+                sendTextMessage(sender, "amazing")
+              }, 3000)
+              continue
+            }
+
             if (lowerText === 'help') {
                 sendTextMessage(sender, 'Type \"start\" to begin your search, or try visiting our website:\nhttps://servobot.herokuapp.com/site/')
                 continue
@@ -143,6 +152,7 @@ app.post('/webhook/', function (req, res) {
               }, 3000)
               continue
             }
+
             if (lowerText === 'location') {
                 sendLocationRequest(sender);
                 continue
