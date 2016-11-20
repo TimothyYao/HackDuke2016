@@ -47,7 +47,7 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                sendServiceOptions(sender);
+                sendGenericMessage(sender);
                 continue
             }
 
