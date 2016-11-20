@@ -68,17 +68,14 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             if (text === "Environment") {
-                sendLocationRequest(sender);
                 setTimeout(function() { findEnvironmentEvents(sender) }, 5000)
                 continue
             }
             if (text === "Health") {
-                sendLocationRequest(sender);
                 setTimeout(function() { findHealthEvents(sender) }, 5000)
                 continue
             }
             if (text === "Poverty") {
-                sendLocationRequest(sender)
                 fsetTimeout(function() { findPovertyEvents(sender) }, 5000)
                 continue
             }
@@ -133,18 +130,21 @@ app.post('/webhook/', function (req, res) {
 })
 
 function findEnvironmentEvents(sender) {
+    sendLocationRequest(sender);
     let link1 = "https://www.facebook.com/events/334490960257445/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
 }
 
 function findHealthEvents(sender) {
+    sendLocationRequest(sender);
     let link1 = "https://www.facebook.com/events/1795108914099674/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
 }
 
 function findPovertyEvents(sender) {
+    sendLocationRequest(sender);
     let link1 = "https://www.facebook.com/events/334490960257445/"
     sendTextMessage(sender, "Here's some events that I found!")
     sendTextMessage(sender, link1);
