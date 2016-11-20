@@ -141,6 +141,14 @@ app.post('/webhook/', function (req, res) {
               continue
             }
 
+            if (text === "wombo combo") {
+              sendAction(sender, "typing_on")
+              setTimeout(function() {
+                sendTextMessage(sender, "grab down throw upsmash grab backthrow shine upsmash sweetspot fair")
+              }, 3000)
+              continue
+            }
+
             if (lowerText === 'help') {
                 sendTextMessage(sender, 'Type \"start\" to begin your search, or try visiting our website:\nhttps://servobot.herokuapp.com/site/')
                 continue
