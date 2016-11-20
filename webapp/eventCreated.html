@@ -13,6 +13,7 @@
 
 		function displayContents() {
 		    if(reader.readyState==4) {
+		    	console.log(reader.responseText);
 		        var el = document.getElementById('logistics');
 		        el.innerHTML = reader.responseText;
 		    }
@@ -25,7 +26,7 @@
 
 	<body>
 			<h1> Thanks for creating the event! </h1>
-			<p class="logistics">
+			<p id="logistics" class="logistics">
 
 			</p>
 
