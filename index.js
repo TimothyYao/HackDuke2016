@@ -4,7 +4,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-var FB = require('fb');
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -47,7 +46,7 @@ app.post('/webhook/', function (req, res) {
             if (lowerText.includes("start")) {
                 var firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
-                sendGenericMessage(sender);
+                sendServiceOptions(sender);
                 continue
             }
 
