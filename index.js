@@ -31,9 +31,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-const token = "EAACZBKrK1208BAIOZAlGbHWYEZAP3nZBaFGr8bicww1w6N9hYRaAS5XYKdVXC3qX
-                ZBh0OMZADWUc1pz6y9YPyZASQXUkq5Absvt8FtTcah5VwXdGXTsEDS52jU1AaUTp
-                GV0Ptul5WZAZAIzPDPqRumeBmxu4hdOOh4KyFFLHRi6RgtwZDZD"
+const token = "EAACZBKrK1208BAIOZAlGbHWYEZAP3nZBaFGr8bicww1w6N9hYRaAS5XYKdVXC3qXZBh0OMZADWUc1pz6y9YPyZASQXUkq5Absvt8FtTcah5VwXdGXTsEDS52jU1AaUTpGV0Ptul5WZAZAIzPDPqRumeBmxu4hdOOh4KyFFLHRi6RgtwZDZD"
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
@@ -111,19 +109,39 @@ app.post('/webhook/', function (req, res) {
 
 function sendServiceOptions(sender) {
     let messageData = {
-        "text":"Pick a color:",
-        "quick_replies":[
-        {
-            "content_type":"text",
-            "title":"Red",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-        },
-        {
-            "content_type":"text",
-            "title":"Green",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Types of Service",
+                    "subtitle": "What type of service are you interested in?",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Environment",
+                        "payload": "Payload for first element in a generic bubble",
+                    }, {
+                        "type": "postback",
+                        "title": "Health",
+                        "payload": "Payload for first element in a generic bubble",
+                    }, {
+                        "type": "postback",
+                        "title": "Poverty",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
         }
-        ]
     }
     sendResponse(sender, messageData);
 }
@@ -204,7 +222,7 @@ function sendGenericMessage(sender) {
 }
 
 function getFirstName(sender) {
-    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender.id + '?fields=first_name&access_token=' + token;
+    let queryUrl = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name&access_token=' + token;
     request({
         url: queryUrl,
         method: 'GET',
