@@ -53,14 +53,12 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-
             if (text.includes("hello")) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
                 continue
             }
-
-            if (attached && (attached.payload.elements.element.title === "Your Location")) {
+            if (attached && (attached.type === "location")) {
                 sendGenericMessage(sender)
                 continue
             }
