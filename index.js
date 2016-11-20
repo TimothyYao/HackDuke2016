@@ -69,15 +69,17 @@ app.post('/webhook/', function (req, res) {
             }
             if (text === "Environment") {
                 sendLocationRequest(sender);
+                setTimeout(function() { findEnvironmentEvents(sender) }, 5000)
                 continue
             }
             if (text === "Health") {
                 sendLocationRequest(sender);
+                setTimeout(function() { findHealthEvents(sender) }, 5000)
                 continue
             }
             if (text === "Poverty") {
                 sendLocationRequest(sender)
-                findPovertyEvents(sender)
+                fsetTimeout(function() { findPovertyEvents(sender) }, 5000)
                 continue
             }
             if (lowerText === 'help') {
@@ -157,7 +159,7 @@ function sendLocationRequest(sender) {
       }
     ]
   }
-  sendResponse(sender, messageData, function() { findEnvironmentEvents(sender) })
+  sendResponse(sender, messageData)
 }
 
 function sendServiceOptions(sender) {
@@ -206,8 +208,7 @@ function sendResponse(sender, data, callback) {
       }
   })
   if (typeof callback === "function") {
-        console.log("CALLBACKKKKKKKKKKKKKK")
-        callback();
+       callback();
    }
 }
 
