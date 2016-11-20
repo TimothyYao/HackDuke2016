@@ -28,7 +28,7 @@ app.get('/site', function (req, res) {
 
 
 app.post('/createEvent', function(req, res) {
-    console.log(req.body.eventName)
+    console.log(req.body)
     res.sendFile('index.html')
 })
 
