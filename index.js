@@ -117,16 +117,12 @@ function sendServiceOptions(sender) {
                     "subtitle": "Element #1 of an hscroll",
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
-                        "type": "Environment",
-                        "url": "Postback",
-                        "title": "environment"
+                        "type": "web_url",
+                        "url": "https://www.messenger.com",
+                        "title": "Environment"
                     }, {
-                        "type": "Health",
-                        "title": "health",
-                        "payload": "Payload for first element in a generic bubble",
-                    }, {
-                        "type": "Poverty",
-                        "title": "poverty",
+                        "type": "postback",
+                        "title": "Health",
                         "payload": "Payload for first element in a generic bubble",
                     }],
                 }, {
@@ -142,21 +138,7 @@ function sendServiceOptions(sender) {
             }
         }
     }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+    sendResponse(sender, messageData);
 }
 
 function sendResponse(sender, data, callback) {
