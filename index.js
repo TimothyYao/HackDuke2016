@@ -38,7 +38,6 @@ const token = "EAACZBKrK1208BAIOZAlGbHWYEZAP3nZBaFGr8bicww1w6N9hYRaAS5XYKdVXC3qX
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
-    console.log(111111111111111111111);
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         var sender = event.sender.id
@@ -63,6 +62,7 @@ app.post('/webhook/', function (req, res) {
                 let firstName = getFirstName(sender)
                 sendTextMessage(sender, "Hello, " + firstName)
                 sendServiceOptions(sender);
+                sendLocationOptions(sender);
                 continue
             }
             if (text === 'help') {
