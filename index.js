@@ -149,9 +149,11 @@ function sendResponse(sender, data, callback) {
       }
   }, function(error, response, body) {
       if (error) {
-          console.log('Error sending messages: ', error)
+        console.log('Error sending messages: ', error)
       } else if (response.body.error) {
-          console.log('Error: ', response.body.error)
+        console.log('Error: ', response.body.error)
+      } else {
+        console.log("Message successfully sent")
       }
   })
   if (typeof callback === "function") {
